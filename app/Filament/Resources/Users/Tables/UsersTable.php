@@ -8,7 +8,7 @@ use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class UsersTable
+class UsersTable 
 {
     public static function configure(Table $table): Table
     {
@@ -16,6 +16,9 @@ class UsersTable
             ->columns([
                 TextColumn::make('name')->label('Noms'),
                 TextColumn::make('email'),
+                TextColumn::make('roles.display_name')
+                ->badge()
+                ->separator(','),
             ])
             ->filters([
                 //
@@ -29,4 +32,6 @@ class UsersTable
                 ]),
             ]);
     }
+
 }
+
