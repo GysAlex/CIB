@@ -6,7 +6,7 @@ namespace App\Models;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -54,9 +54,22 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsToMany(Role::class);
     }
 
-    public function canAccessPanel(\Filament\Panel $panel): bool{
-        
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+
         return $this->roles()->whereIn('name', ['admin', 'staff'])->exists();
+    }
+
+    // Les tâches assignées à cet employé
+    public function tasks(): BelongsToMany
+    {
+        return $this->belongsToMany(Task::class, 'task_user');
+    }
+
+    // Les tâches créées par cet utilisateur (s'il est admin)
+    public function createdTasks(): HasMany
+    {
+        return $this->hasMany(Task::class, 'creator_id');
     }
 
 }
