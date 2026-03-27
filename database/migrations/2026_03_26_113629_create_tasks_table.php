@@ -12,28 +12,29 @@ return new class extends Migration {
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained()->onDelete('cascade');
-            $table->foreignId('creator_id')->constrained('users'); // L'admin/staff qui crée
+            $table->foreignId('project_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('creator_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('task_template_id')->nullable()->constrained()->nullOnDelete();
+
             $table->string('title');
             $table->text('description')->nullable();
-            $table->enum('priority', ['basse', 'normale', 'haute', 'critique'])->default('normale');
+            $table->json('objectives')->nullable();
+            $table->date('deadline')->nullable();
+            $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
+            $table->boolean('is_launched')->default(false);
+            $table->date('launch_at')->nullable();
+            $table->string('expected_deliverable')->nullable();
             $table->enum('status', ['a_faire', 'en_cours', 'en_attente_validation', 'valide'])->default('a_faire');
-            $table->date('deadline');
-
-            // Pour la checklist, on peut utiliser un champ JSON si on veut rester simple
-            // ou une table séparée si on veut des statistiques par objectif.
-            $table->json('checklist')->nullable();
-
             $table->timestamps();
         });
 
         Schema::create('task_user', function (Blueprint $table) {
-            $table->id();
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->primary(['task_id', 'user_id']);
             $table->timestamps();
         });
-
     }
 
     /**
@@ -43,6 +44,5 @@ return new class extends Migration {
     {
         Schema::dropIfExists('task_user');
         Schema::dropIfExists('tasks');
-
     }
 };

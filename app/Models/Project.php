@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Observers\ProjectObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+
+// #[ObservedBy([ProjectObserver::class])]
 class Project extends Model
 {
     //
@@ -30,5 +34,9 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class);
+    }
 
 }

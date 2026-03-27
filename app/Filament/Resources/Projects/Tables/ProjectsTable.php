@@ -12,6 +12,7 @@ use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectsTable
 {
@@ -77,7 +78,16 @@ class ProjectsTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->modifyQueryUsing(
+                function (Builder $query) {
+                    $projectId = request()->query('project');
+                    if ($projectId)
+                        $query->where('project_id', $projectId);
+                }
+
+            )
+        ;
     }
 
 }

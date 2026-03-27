@@ -2,8 +2,12 @@
 
 namespace App\Filament\Resources\Tasks\Schemas;
 
+use App\Filament\Infolists\Components\TaskProgressBar;
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\RepeatableEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\FontWeight;
 
 class TaskInfolist
 {
@@ -11,29 +15,51 @@ class TaskInfolist
     {
         return $schema
             ->components([
-                TextEntry::make('project.name')
-                    ->label('Project'),
-                TextEntry::make('creator.name')
-                    ->label('Creator'),
-                TextEntry::make('title'),
-                TextEntry::make('description')
-                    ->placeholder('-')
-                    ->columnSpanFull(),
-                TextEntry::make('priority')
-                    ->badge(),
-                TextEntry::make('status')
-                    ->badge(),
-                TextEntry::make('deadline')
-                    ->date(),
-                // TextEntry::make('checklist')
-                //     ->placeholder('-')
-                //     ->columnSpanFull(),
-                TextEntry::make('created_at')
-                    ->dateTime()
-                    ->placeholder('-'),
-                TextEntry::make('updated_at')
-                    ->dateTime()
-                    ->placeholder('-'),
+                // Colonne gauche
+                Section::make('Détails de la tâche')
+                    ->schema([
+                        TextEntry::make('title')
+                            ->label('Intitulé')
+                            ->weight(FontWeight::Bold),
+                        TaskProgressBar::make('progression'),
+                        RepeatableEntry::make('checklist')
+                            ->label('Livrables attendus')
+                            ->placeholder('Aucun point de contrôle défini')
+                            ->schema([
+                                TextEntry::make('item')
+                                ->label('Objectifs')
+                                ->bulleted()
+                            ]),
+                    ]),
+
+                // Colonne droite
+                Section::make('Statut & Priorité')
+                    ->schema([
+                        TextEntry::make('status')
+                            ->label('Statut actuel')
+                            ->badge()
+                            ->color(fn(string $state): string => match ($state) {
+                                'a_faire' => 'gray',
+                                'en_cours' => 'warning',
+                                'en_attente_validation' => 'info',
+                                'valide' => 'success',
+                            }),
+                        TextEntry::make('priority')
+                            ->label('Urgence')
+                            ->badge()
+                            ->color(fn(string $state): string => match ($state) {
+                                'basse' => 'gray',
+                                'normale' => 'info',
+                                'haute' => 'warning',
+                                'critique' => 'danger',
+                            }),
+                        TextEntry::make('employees.name')
+                            ->label('Employés assignés')
+                            ->badge() // Crée une bulle individuelle pour chaque employé
+                            ->color('gray')
+                            ->placeholder('Aucun intervenant'),
+                    ])
+
             ]);
     }
 }

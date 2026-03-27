@@ -92,27 +92,8 @@ class UserResource extends Resource
                                 Icon::make(Heroicon::Briefcase)
                             ])
                             ->label('Poste')
-                            ]),
-                Section::make('other thing')
-                ->inlineLabel()
-                                   ->schema([
-                        TextEntry::make('name')
-                            ->label('Nom & prénom')
-                            ->beforeLabel([
-                                Icon::make(Heroicon::User)
-                            ]),
-                        TextEntry::make('email')
-                            ->label('Email')
-                            ->beforeLabel([
-                                Icon::make(Heroicon::Envelope)
-                            ])
-                        ,
-                        TextEntry::make('roles.display_name')
-                            ->beforeLabel([
-                                Icon::make(Heroicon::Briefcase)
-                            ])
-                            ->label('Poste')
-                            ]),
+                    ]),
+
             ]);
     }
 

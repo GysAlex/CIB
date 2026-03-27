@@ -9,12 +9,14 @@ use App\Filament\Resources\Tasks\Pages\ViewTask;
 use App\Filament\Resources\Tasks\Schemas\TaskForm;
 use App\Filament\Resources\Tasks\Schemas\TaskInfolist;
 use App\Filament\Resources\Tasks\Tables\TasksTable;
+use App\Filament\Resources\Tasks\Widgets\ProjectSwitcher;
 use App\Models\Task;
 use BackedEnum;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 class TaskResource extends Resource
@@ -29,7 +31,7 @@ class TaskResource extends Resource
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
-    protected static string | UnitEnum | null $navigationGroup = 'Gestion des projets';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestion des projets';
 
     protected static ?string $recordTitleAttribute = 'Tâches';
 
@@ -48,10 +50,22 @@ class TaskResource extends Resource
         return TasksTable::configure($table);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
     public static function getRelations(): array
     {
         return [
             //
+        ];
+    }
+
+    public static function getWidgets(): array
+    {
+        return [
+            ProjectSwitcher::class,
         ];
     }
 

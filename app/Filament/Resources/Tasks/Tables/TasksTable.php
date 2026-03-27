@@ -15,6 +15,7 @@ use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 
 class TasksTable
 {
@@ -129,6 +130,17 @@ class TasksTable
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->modifyQueryUsing(
+                function (Builder $query, $livewire) {
+                    $projectId = $livewire->project ?? request()->query('project');
+
+                    if ($projectId) {
+                        $query->where('project_id', $projectId);
+                    }
+                }
+
+            )
+        ;
     }
 }

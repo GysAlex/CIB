@@ -11,10 +11,12 @@ use App\Filament\Resources\Projects\Schemas\ProjectInfolist;
 use App\Filament\Resources\Projects\Tables\ProjectsTable;
 use App\Models\Project;
 use BackedEnum;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 
@@ -35,6 +37,11 @@ class ProjectResource extends Resource
         return ProjectForm::configure($schema);
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
+    }
+
     public static function infolist(Schema $schema): Schema
     {
         return ProjectInfolist::configure($schema);
@@ -48,7 +55,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            'tasks' => RelationManagers\TasksRelationManager::class
         ];
     }
 

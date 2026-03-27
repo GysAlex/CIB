@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Projects\Pages;
 use App\Filament\Resources\Projects\ProjectResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\Database\Eloquent\Builder;
 
 class ListProjects extends ListRecords
 {
@@ -15,5 +16,10 @@ class ListProjects extends ListRecords
         return [
             CreateAction::make(),
         ];
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->withoutGlobalScopes();
     }
 }

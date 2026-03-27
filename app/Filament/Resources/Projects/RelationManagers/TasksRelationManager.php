@@ -1,25 +1,34 @@
 <?php
 
-namespace App\Filament\Resources\Tasks\Schemas;
+namespace App\Filament\Resources\Projects\RelationManagers;
 
-use App\Models\Project;
-use App\Models\Task;
+use App\Filament\Infolists\Components\TaskProgressBar;
+use App\Filament\Resources\Tasks\Schemas\TaskInfolist;
+use App\Filament\Resources\Tasks\Tables\TasksTable;
+use Filament\Actions\CreateAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\ToggleButtons;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ViewEntry;
+use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Group;
 use Filament\Schemas\Components\Section;
-use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
+use Filament\Support\Enums\FontWeight;
 use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
 
-class TaskForm
+class TasksRelationManager extends RelationManager
 {
-    public static function configure(Schema $schema): Schema
+    protected static string $relationship = 'tasks';
+
+    public function form(Schema $schema): Schema
     {
         return $schema
             ->components([
@@ -28,17 +37,10 @@ class TaskForm
                         ->description('Lier la tâche à un projet et aux intervenants.')
                         ->icon('heroicon-o-user-group')
                         ->schema([
-                            Select::make('project_id')
-                                ->label('Projet de génie civil')
-                                ->relationship('project', 'name')
-                                ->searchable()
-                                ->preload()
-                                ->required(),
-
                             Select::make('employees')
                                 ->label('Assigner à (Employés)')
                                 ->multiple()
-                                ->relationship('members', 'name')
+                                ->relationship('employees', 'name')
                                 ->preload()
                                 ->required(),
 
@@ -103,7 +105,7 @@ class TaskForm
                             DatePicker::make('deadline')
                                 ->label('Date d\'échéance')
                                 ->required()
-                                ->minDate(fn(Get $get) => Project::find($get('project_id'))?->start_date)
+                                ->minDate(fn(RelationManager $livewire) => $livewire->getOwnerRecord()->start_date)
                                 ->native(false)
                                 ->suffixIcon(Heroicon::OutlinedCalendarDays),
 
@@ -122,5 +124,24 @@ class TaskForm
                     ->columnSpanFull() // Le wizard prend toute la largeur
                     ->skippable() // Permet au gérant de naviguer entre les étapes s'il veut corriger
             ]);
+    }
+
+    public function infolist(Schema $schema): Schema
+    {
+        return TaskInfolist::configure($schema);
+    }
+
+    public function table(Table $table): Table
+    {
+        return TasksTable::configure($table)
+            ->heading('Tâches')
+            ->headerActions([
+                CreateAction::make()
+                    ->mutateDataUsing(function (array $data): array {
+                        $data['creator_id'] = auth()->id();
+                        return $data;
+                    })
+            ])
+        ;
     }
 }
