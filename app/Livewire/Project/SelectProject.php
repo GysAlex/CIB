@@ -29,15 +29,17 @@ class SelectProject extends Component implements HasSchemas
         return $schema
         ->components([
             Select::make('project')
-                    ->label('Filtrer par projet')
+                    ->label('filter mes tâches par projets')
                     ->options(Project::query()->pluck('name', 'id'))
                     ->searchable() // Permet la recherche par nom
                     ->preload()    // Charge les données pour une recherche instantanée
                     ->placeholder('Tous les projets')
                     ->live()       // Déclenche une mise à jour dès que la sélection change
-                    ->afterStateUpdated(function ($state) {
-                        // On met à jour l'URL et on redirige
-                        return redirect()->to(request()->fullUrlWithQuery(['project' => $state]));
+                    ->afterStateUpdated(function ($state, $livewire) {
+                       
+                        $livewire->project = $state;
+
+                        $livewire->dispatch('project-filter-updated', projectId: $state);
                     }),
         ]);
     }

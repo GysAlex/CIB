@@ -18,8 +18,4 @@ class ListProjects extends ListRecords
         ];
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->withoutGlobalScopes();
-    }
 }

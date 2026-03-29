@@ -4,16 +4,20 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasMedia
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.
@@ -57,7 +61,13 @@ class User extends Authenticatable implements FilamentUser
     public function canAccessPanel(\Filament\Panel $panel): bool
     {
 
-        return $this->roles()->whereIn('name', ['admin', 'staff'])->exists();
+        if($panel->getID() == 'admin')
+            return $this->roles()->whereIn('name', ['admin', 'staff'])->exists();
+
+        if($panel->getID() == 'employee')
+            return $this->roles()->whereIn('name', ['employee'])->exists();
+
+        return false;
     }
 
     // Les tâches assignées à cet employé
@@ -70,6 +80,17 @@ class User extends Authenticatable implements FilamentUser
     public function createdTasks(): HasMany
     {
         return $this->hasMany(Task::class, 'creator_id');
+    }
+
+
+    public function latestSubmission(): HasOne
+    {
+        return $this->hasOne(Submission::class)->latestOfMany();
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->roles->pluck('name')->contains($role);
     }
 
 }

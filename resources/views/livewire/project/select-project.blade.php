@@ -1,7 +1,5 @@
-<div class="flex items-center">
-        <form wire:submit="create">
+<div class="flex items-center justify-center w-full ">
+        <form wire:submit.prevent="">
         {{ $this->form }}
     </form>
-    
-    <x-filament-actions::modals />
 </div>

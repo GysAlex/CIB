@@ -37,10 +37,6 @@ class ProjectResource extends Resource
         return ProjectForm::configure($schema);
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->withoutGlobalScopes();
-    }
 
     public static function infolist(Schema $schema): Schema
     {

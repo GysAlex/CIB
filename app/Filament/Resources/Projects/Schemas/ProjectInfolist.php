@@ -3,8 +3,6 @@ namespace App\Filament\Resources\Projects\Schemas;
 
 use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Components\Split;
-use Filament\Infolists\Components\IconEntry;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;

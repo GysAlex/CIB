@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
 use App\Models\Role;
 use App\Models\TaskTemplate;
 use App\Models\User;
@@ -44,8 +45,18 @@ Route::post('/filament/project/switch', function (Request $request) {
 
 
 
+Route::get('/download-media/{media}', [DownloadController::class, 'show'])
+    ->name('media.download')
+    ->middleware(['auth']); // Sécurise l'accès aux plans
+
 Route::get('/tasks', function(){
     $task = TaskTemplate::findOrFail(2);
 
     return $task->parent;
+});
+
+Route::get('/testing', function(){
+    $user = User::where('name', 'admin')->first();
+    dd($user->roles->pluck('name')->contains('admin'));
+    return ;
 });
