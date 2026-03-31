@@ -168,7 +168,12 @@ class SubmissionResource extends Resource
 
                                                 TextEntry::make('status')
                                                     ->badge()
-                                                    ->label('État'),
+                                                    ->label('État')
+                                                    ->color(fn($state): string => match($state){
+                                                        'rejected' => 'danger',
+                                                        'done' => 'success',
+                                                        default => 'gray'
+                                                    }),
 
                                                 TextEntry::make('submitted_at')
                                                     ->label('Date d\'envoi')
@@ -179,6 +184,10 @@ class SubmissionResource extends Resource
                                                     ->suffix('/5')
                                                     ->placeholder('—'),
                                             ]),
+
+                                            SpatieMediaDownloadEntry::make('Pièce jointe associées')
+                                            ->collection('documents')
+                                            ->hint(fn($record) => $record->status === 'rejected' && $record->updated_at->lt(now()->subDays(30)) ? 'Fichier archivé' : ''),
 
                                         TextEntry::make('feedback.comment')
                                             ->label('Feedback de l\'administration')

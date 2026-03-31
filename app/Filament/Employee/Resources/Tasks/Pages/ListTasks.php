@@ -10,6 +10,8 @@ use Livewire\Attributes\Url;
 
 class ListTasks extends ListRecords
 {
+    #[Url]
+    public ?string $project = null;
     protected static string $resource = TaskResource::class;
 
     protected function getHeaderActions(): array
@@ -19,10 +21,6 @@ class ListTasks extends ListRecords
         ];
     }
 
-
-
-    #[Url]
-    public ?string $project = null;
 
     #[On('project-filter-updated')]
     public function refreshFilteredTable($projectId): void

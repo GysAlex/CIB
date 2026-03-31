@@ -227,6 +227,18 @@ class TasksTable
                     ->modalSubmitActionLabel('Oui, marquer comme terminé')
                     ->visible(fn($record) => $record->is_launched && $record->status !== 'valide')
                     ->action(function ($record) {
+
+                        $hasValidatedSubmission = $record->submissions()->where('status', 'done')->exists();
+
+                        if (!$hasValidatedSubmission) {
+                            Notification::make()
+                                ->title('Clôture impossible')
+                                ->body('Vous devez d\'abord approuver au moins une soumission d\'employé avant de terminer la tâche.')
+                                ->danger()
+                                ->send();
+                            return;
+                        }
+
                         $record->update([
                             'status' => 'valide',
                         ]);

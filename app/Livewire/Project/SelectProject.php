@@ -4,6 +4,7 @@ namespace App\Livewire\Project;
 
 use App\Models\Project;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Contracts\HasSchemas;
 use Filament\Schemas\Concerns\InteractsWithSchemas;
 use Livewire\Attributes\Url;
@@ -28,8 +29,10 @@ class SelectProject extends Component implements HasSchemas
     {
         return $schema
         ->components([
-            Select::make('project')
-                    ->label('filter mes tâches par projets')
+            Section::make('Choisir un projet')
+            ->schema([
+                Select::make('project')
+                    ->label('projets')
                     ->options(Project::query()->pluck('name', 'id'))
                     ->searchable() // Permet la recherche par nom
                     ->preload()    // Charge les données pour une recherche instantanée
@@ -41,6 +44,8 @@ class SelectProject extends Component implements HasSchemas
 
                         $livewire->dispatch('project-filter-updated', projectId: $state);
                     }),
+            ])
+
         ]);
     }
 }
