@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
+use App\Models\CategoryTemplate;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\ToggleButtons;
@@ -17,6 +19,7 @@ use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Database\Eloquent\Builder;
 
 class ProjectForm
 {
@@ -33,7 +36,16 @@ class ProjectForm
                                 ->required()
                                 ->placeholder('ex: Construction Pont de la Sanaga')
                                 ->maxLength(255),
-
+                            Select::make('client_id')
+                                ->label('Client propriétaire')
+                                ->relationship(
+                                    name: 'client',
+                                    titleAttribute: 'name',
+                                    modifyQueryUsing: fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'client'))
+                                )
+                                ->searchable()
+                                ->preload()
+                                ->required(),
                             ToggleButtons::make('status')
                                 ->label('État d’avancement')
                                 ->options([
@@ -106,7 +118,7 @@ class ProjectForm
                             // On enveloppe le tout dans une grille de 2 colonnes
                             Grid::make(2)
                                 ->schema(function () {
-                                    $categories = \App\Models\CategoryTemplate::with('taskTemplates')->get();
+                                    $categories = CategoryTemplate::with('taskTemplates')->get();
                                     $fields = [];
 
                                     foreach ($categories as $category) {
@@ -127,8 +139,8 @@ class ProjectForm
                                 })
                         ]),
                 ])->columnSpanFull()
-                ->skippable()
-                ,
+                    ->skippable(),
+
 
             );
     }

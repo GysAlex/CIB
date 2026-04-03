@@ -40,6 +40,11 @@ class ProjectsTable
                     ->searchable()
                     ->sortable(),
 
+                TextColumn::make('client.name')
+                    ->label('Nom du client')
+                    ->searchable()
+                    ->sortable(),
+
                 TextColumn::make('status')
                     ->label('Statut')
                     ->badge()

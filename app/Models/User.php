@@ -27,6 +27,8 @@ class User extends Authenticatable implements FilamentUser, HasMedia
     protected $fillable = [
         'name',
         'email',
+        'phone',
+        'company_name',
         'password',
     ];
 
@@ -67,6 +69,9 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         if($panel->getID() == 'employee')
             return $this->roles()->whereIn('name', ['employee'])->exists();
 
+        if($panel->getID() == 'client')
+            return $this->hasRole('client');
+
         return false;
     }
 
@@ -91,6 +96,16 @@ class User extends Authenticatable implements FilamentUser, HasMedia
     public function hasRole(string $role): bool
     {
         return $this->roles->pluck('name')->contains($role);
+    }
+
+    public function isClient(): bool
+    {
+        return $this->hasRole('client');
+    }
+
+    public function projects(): HasMany
+    {
+        return $this->hasMany(Project::class, 'client_id');
     }
 
 }

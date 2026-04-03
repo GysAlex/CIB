@@ -1,6 +1,6 @@
-<div class="space-y-6">
+<div class="space-y-6 ">
     {{-- Barre d'outils de l'explorateur --}}
-    <div class="flex justify-between items-center px-2">
+    <div class="flex justify-between items-center">
         <h3 class="text-sm font-semibold text-gray-600 uppercase tracking-wider">Documents validés</h3>
         
         @if($files->isNotEmpty())
@@ -59,11 +59,9 @@
                         >
                             <x-heroicon-m-arrow-down-tray class="w-4 h-4 mx-auto" />
                         </button>
-                        
-                        {{-- Utilisation de l'action Filament pour les détails
-                        <button wire:click="mountAction('viewDetails, { record: {{ $file->id }}}')" class="flex-1 flex justify-center items-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                            test
-                        </button> --}}
+                        <button title="Plus d'informations" wire:click="mountAction('viewDetails', { record: {{ $file->id }} })" class="flex-1 p-2 bg-transparent flex justify-center text-xs items-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                            <x-heroicon-o-information-circle class="w-4 h-4 mx-auto text-blue-600" />
+                        </button>
                     </div>
                 </div>
             @endforeach

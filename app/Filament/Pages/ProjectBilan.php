@@ -6,14 +6,16 @@ use App\Livewire\ProjectBilanStats;
 use App\Models\Project;
 use App\Models\Task;
 use BackedEnum;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Pages\Page;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
-use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
+
 use UnitEnum;
 
 class ProjectBilan extends Page
@@ -61,6 +63,30 @@ class ProjectBilan extends Page
         $this->task = null;
     }
 
+    public function getHeaderActions(): array
+    {
+        return [
+            Action::make('exportPDF')
+                ->label('Générer le Rapport Officiel')
+                ->icon('heroicon-m-document-check')
+                ->visible(fn() => $this->project !== null)
+                ->action(fn() => $this->generatePdf()),
+        ];
+    }
+
+    public function generatePdf()
+    {
+        $projectRecord = Project::with(['tasks.submissions.media'])->find($this->project);
+
+        $pdf = Pdf::loadView('pdf.project-report', [
+            'project' => $projectRecord,
+            'date' => now()->format('d/m/Y'),
+        ]);
+
+        return response()->streamDownload(function () use ($pdf) {
+            echo $pdf->output();
+        }, "Rapport_" . str_replace(' ', '_', $projectRecord->name) . ".pdf");
+    }
 
     public function form(Schema $schema): Schema
     {
@@ -73,10 +99,10 @@ class ProjectBilan extends Page
                                 Select::make('project')
                                     ->label('projets')
                                     ->options(Project::query()->pluck('name', 'id'))
-                                    ->searchable() // Permet la recherche par nom
-                                    ->preload()    // Charge les données pour une recherche instantanée
+                                    ->searchable() 
+                                    ->preload()    
                                     ->placeholder('Tous les projets')
-                                    ->live()       // Déclenche une mise à jour dès que la sélection change
+                                    ->live()       
                                     ->afterStateUpdated(function ($state, $livewire) {
 
                                         $livewire->project = $state;
@@ -87,10 +113,10 @@ class ProjectBilan extends Page
                                 Select::make('task')
                                     ->label('Tâches')
                                     ->options(Task::query()->pluck('title', 'id'))
-                                    ->searchable() // Permet la recherche par nom
-                                    ->preload()    // Charge les données pour une recherche instantanée
-                                    ->placeholder('Tous les projets')
-                                    ->live()       // Déclenche une mise à jour dès que la sélection change
+                                    ->searchable() 
+                                    ->preload()    
+                                    ->placeholder('Toutes les tâches')
+                                    ->live()       
                                     ->afterStateUpdated(function ($state, $livewire) {
 
                                         $livewire->task = $state;

@@ -26,12 +26,21 @@ class CreateProject extends CreateRecord
             ->flatten()
             ->toArray();
 
+        Log::info('les id sélectionnés', [
+            'tableau origine' => collect($this->data)->flatten()
+            
+        ]);
+
         if (!empty($selectedTaskIds)) {
             $taskTemplates = TaskTemplate::with('categoryTemplate')
                 ->whereIn('id', $selectedTaskIds)
                 ->get();
 
             $groupedTasks = $taskTemplates->groupBy('category_template_id');
+
+            Log::info('les id sélectionnés', [
+                'Les tâches groupés' => $groupedTasks,
+            ]);
 
             foreach ($groupedTasks as $catTemplateId => $tasks) {
                 $catTemplate = $tasks->first()->categoryTemplate;

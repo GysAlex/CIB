@@ -20,6 +20,7 @@ class Task extends Model implements HasMedia
         'project_id',
         'creator_id',
         'category_id',
+        'task_template_id',
         'title',
         'description',
         'priority',

@@ -13,12 +13,17 @@ return new class extends Migration {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('client_id')
+                ->nullable()
+                ->constrained('users')
+                ->onDelete('set null');
             $table->text('description')->nullable();
             $table->string('image_path')->nullable(); // Image de couverture du projet
             $table->string('location')->nullable();
             $table->enum('status', ['etude', 'en_cours', 'termine', 'suspendu'])->default('etude');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
+
             $table->timestamps();
         });
     }

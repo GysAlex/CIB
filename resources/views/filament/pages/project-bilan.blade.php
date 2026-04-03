@@ -7,7 +7,7 @@
     </div>
 
     {{-- Zone de l'Explorateur de Fichiers (Étape suivante) --}}
-    <div class="bg-gray-200 p-3">
+    <div class="p-8 border border-gray-400 rounded-2xl">
         @if($project)
             <livewire:project-file-explorer :projectId="$project" :taskId="$task" :key="$project . '-' . $task" />
         @else
