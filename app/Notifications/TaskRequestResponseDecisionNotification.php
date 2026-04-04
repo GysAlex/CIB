@@ -39,7 +39,7 @@ class TaskRequestResponseDecisionNotification extends Notification implements Sh
         $isApprouve = $this->taskRequest->status === 'approuve';
 
         return (new MailMessage)
-            ->subject("BluePay | Mise à jour de votre demande : " . $this->taskRequest->title)
+            ->subject(env('APP_NAME')." | Mise à jour de votre demande : " . $this->taskRequest->title)
             ->markdown('email.request.task-decision', [
                 'taskRequest' => $this->taskRequest,
                 'statusTitle' => $isApprouve ? "✅ Demande Approuvée" : "❌ Demande Refusée",

@@ -17,6 +17,8 @@ use Filament\Schemas\Components\Wizard;
 use Filament\Schemas\Components\Wizard\Step;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use FontLib\Table\Type\name;
+use Illuminate\Database\Eloquent\Builder;
 
 class TaskForm
 {
@@ -40,7 +42,11 @@ class TaskForm
                             Select::make('user_id') // Utilise la relation Task-User (task_user)
                                 ->label('Assigner à (Employés)')
                                 ->multiple()
-                                ->relationship('members', 'name')
+                                ->relationship(
+                                    name: 'members',
+                                    titleAttribute: 'name',
+                                    modifyQueryUsing: fn(Builder $query) => $query->whereHas('roles', fn($q) => $q->where('name', 'employee'))   
+                                )
                                 ->preload()
                                 ->required(),
 

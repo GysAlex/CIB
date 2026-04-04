@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Tasks\Tables;
 use App\Filament\Resources\Projects\ProjectResource;
 use App\Filament\Resources\Tasks\TaskResource;
 use App\Models\Project;
+use App\Notifications\DeliverableValidatedNotification;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkAction;
@@ -257,6 +258,11 @@ class TasksTable
                             ->body("L'administration a validé définitivement la tâche : \"{$record->title}\".")
                             ->success()
                             ->sendToDatabase($members);
+
+                        $client = $record->project->client;
+                        if ($client) {
+                            $client->notify(new DeliverableValidatedNotification($record));
+                        }
                     }),
                 ActionGroup::make([
                     ViewAction::make(),

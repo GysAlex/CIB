@@ -3,15 +3,21 @@
 namespace App\Livewire;
 
 use App\Models\Project;
+use App\Models\Submission;
 use App\Models\Task;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class ProjectBilanStats extends StatsOverviewWidget
 {
     // On passe l'ID du projet depuis la page parente
     public ?int $projectId = null;
+
+    public ?int $taskId = null;
 
     protected function getStats(): array
     {
@@ -25,6 +31,16 @@ class ProjectBilanStats extends StatsOverviewWidget
 
         $project = Project::with('tasks')->find($this->projectId);
 
+        $sumissionIds =  [];
+
+        foreach($project->tasks as $t)
+        {
+            foreach($t->submissions as $s)
+            {
+                $sumissionIds[] = $s->value('id');
+            }
+        }
+
         if (!$project)
             return [];
 
@@ -35,21 +51,20 @@ class ProjectBilanStats extends StatsOverviewWidget
         // Calcul du pourcentage de progression
         $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
 
-        // Récupération du nombre de fichiers uniques validés (GED)
-        $filesCount = \DB::table('media')
-            ->whereIn('model_id', $project->tasks->pluck('id'))
-            ->where('model_type', Task::class) // Ou Submission selon ton stockage
+
+        $filesCount = Media::whereIn('model_id', $sumissionIds)
             ->count();
 
+
         return [
-            // 1. Barre de progression visuelle
+            
             Stat::make('Avancement Global', "{$progress}%")
                 ->description("{$completedTasks} sur {$totalTasks} missions terminées")
                 ->descriptionIcon($progress === 100 ? 'heroicon-m-check-badge' : 'heroicon-m-chart-bar')
                 ->color($progress === 100 ? 'success' : 'primary')
-                ->chart([$progress, 100]), // Petit graphique linéaire
+                ->chart([$progress, 100]),
 
-            // 2. Compteur de tâches restantes avec détail
+            
             Stat::make('Missions Restantes', $remainingTasks->count())
                 ->description(function () use ($remainingTasks) {
                     if ($remainingTasks->isEmpty())
@@ -73,7 +88,15 @@ class ProjectBilanStats extends StatsOverviewWidget
     public function refreshFilteredTable($projectId): void
     {
         $this->projectId = $projectId;
+
     }
 
+    // #[On('task-filter-updated')]
+    // public function refreshTask($taskId): void
+    // {
+    //     $this->taskId = $taskId;
+
+    //     dd($taskId);
+    // }
     
 }

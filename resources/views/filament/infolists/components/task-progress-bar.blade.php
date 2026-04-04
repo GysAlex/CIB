@@ -1,6 +1,8 @@
 @php
     $start = $record->created_at;
     $end = $record->deadline;
+    if(!$end)
+        $end = $record->task->deadline;
     $now = now();
 
     $totalDays = $start->diffInDays($end) ?: 1; 

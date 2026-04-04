@@ -99,10 +99,10 @@ class ProjectBilan extends Page
                                 Select::make('project')
                                     ->label('projets')
                                     ->options(Project::query()->pluck('name', 'id'))
-                                    ->searchable() 
-                                    ->preload()    
+                                    ->searchable()
+                                    ->preload()
                                     ->placeholder('Tous les projets')
-                                    ->live()       
+                                    ->live()
                                     ->afterStateUpdated(function ($state, $livewire) {
 
                                         $livewire->project = $state;
@@ -112,14 +112,22 @@ class ProjectBilan extends Page
 
                                 Select::make('task')
                                     ->label('Tâches')
-                                    ->options(Task::query()->pluck('title', 'id'))
-                                    ->searchable() 
-                                    ->preload()    
-                                    ->placeholder('Toutes les tâches')
-                                    ->live()       
+                                    ->options(
+                                        function () {
+                                            if($this->project)
+                                                return Project::where('id', $this->project)->first()->tasks->pluck('title', 'id');
+                                        }
+
+                                    )
+                                    ->searchable()
+                                    ->preload()
+                                    ->placeholder('Toutes les ')
+                                    ->live()
                                     ->afterStateUpdated(function ($state, $livewire) {
 
                                         $livewire->task = $state;
+
+                                        $livewire->dispatch('task-filter-updated', taskId: $state);
 
                                     }),
                             ])->columnSpanFull()

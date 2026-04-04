@@ -49,6 +49,15 @@ class UserResource extends Resource
     }
 
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->whereHas(
+                'roles',
+                fn(Builder $query) =>
+                $query->where('name', 'employee')
+            );
+    }
 
     public static function getPages(): array
     {
@@ -60,14 +69,6 @@ class UserResource extends Resource
         ];
     }
 
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->whereHas(
-            'roles',
-            fn(Builder $query) =>
-            $query->whereNotIn('name', ['admin', 'staff'])
-        );
-    }
 
     public static function infolist(Schema $schema): Schema
     {

@@ -40,7 +40,7 @@
                     </div>
 
                     {{-- Détails --}}
-                    <div class="p-3 flex-grow">
+                    <div class="p-3 grow">
                         <p class="text-xs font-semibold truncate text-gray-700 dark:text-gray-300 mb-1" title="{{ $file->name }}">
                             {{ $file->name }}
                         </p>

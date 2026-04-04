@@ -39,7 +39,7 @@ class BulkTaskRequestNotification extends Notification implements ShouldQueue
         $url = route('filament.admin.resources.task-requests.index');
 
         return (new MailMessage)
-            ->subject("BluePay | " . $this->taskRequests->count() . " Nouvelles demandes - " . $firstRequest->project->name)
+            ->subject(env('APP_NAME')." | " . $this->taskRequests->count() . " Nouvelles demandes - " . $firstRequest->project->name)
             ->markdown('email.request.bulk-task-request', [
                 'tasks' => $this->taskRequests,
                 'project' => $firstRequest->project,
