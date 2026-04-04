@@ -11,7 +11,10 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRequestForm
 {
@@ -23,10 +26,11 @@ class TaskRequestForm
                     ->schema([
                         Select::make('project_id')
                             ->label('Projet cible')
-                            ->options(fn() => Project::where('client_id', auth()->id())->pluck('name', 'id'))
+                            ->options(fn(): array => Project::where('client_id', auth()->id())->pluck('name', 'id')->toArray())
                             ->required()
+                            ->live()
                             ->native(false)
-                            ->default(fn() => Project::where('client_id', auth()->id())->latest()->value('name')),
+                            ->afterStateUpdated(fn(Set $set) => $set('refresh_tasks', now())),
 
                         Grid::make(2)
                             ->schema([
@@ -34,7 +38,26 @@ class TaskRequestForm
                                     ->description('Cochez les tâches que vous souhaitez ajouter.')
                                     ->schema([
                                         Grid::make(1)
-                                            ->schema(function () {
+                                            ->schema(function (Get $get) {
+
+
+
+                                                $projectId = $get('project_id');
+
+                                                $existingId = [];
+
+                                                // if(!empty($projectId))
+                                                //     dd($projectId);
+                                    
+                                                $existingProject = Project::where('client_id', Auth::id())
+                                                    ->where('id', $projectId)->first();
+                                                if (!empty($existingProject))
+                                                    $existingId = $existingProject->tasks()
+                                                        ->whereNotNull('task_template_id')
+                                                        ->pluck('task_template_id')
+                                                        ->toArray();
+
+
                                                 $categories = CategoryTemplate::with('taskTemplates')->get();
                                                 $fields = [];
                                                 foreach ($categories as $category) {
@@ -44,7 +67,20 @@ class TaskRequestForm
                                                             CheckboxList::make("temp_tasks_{$category->id}")
                                                                 ->options($category->taskTemplates->pluck('title', 'id'))
                                                                 ->columns(2)
-                                                                ->dehydrated(true),
+                                                                ->descriptions($category->taskTemplates->mapWithKeys(function ($item) use ($existingId) {
+                                                                    return [
+                                                                        $item->id => in_array($item->id, $existingId)
+                                                                            ? 'Déjà inclus dans le projet'
+                                                                            : null
+                                                                    ];
+                                                                }))
+                                                                ->disableOptionWhen(fn($value): bool => in_array($value, $existingId))
+                                                                ->dehydrated(false)
+                                                                ->extraAttributes(fn($state) => [
+                                                                    'class' => 'opacity-75',
+                                                                ])
+                                                                ->default($existingId),
+
                                                         ]);
                                                 }
                                                 return $fields;

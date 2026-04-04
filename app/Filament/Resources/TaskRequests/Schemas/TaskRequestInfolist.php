@@ -32,7 +32,7 @@ class TaskRequestInfolist
                         TextEntry::make('created_at')
                             ->label('Date de réception')
                             ->dateTime('d/m/Y H:i'),
-                    ]),
+                    ])->columnSpanFull(),
 
                 // SECTION 2 : CONTENU TECHNIQUE
                 Grid::make(2)
@@ -68,7 +68,7 @@ class TaskRequestInfolist
                                         ->placeholder('Aucune description fournie par le client.'),
                                 ]),
                         ]),
-                    ]),
+                    ])->columnSpanFull(),
 
                 // SECTION 3 : ÉTAT ET COMMENTAIRES
                 Section::make('Traitement Administratif')

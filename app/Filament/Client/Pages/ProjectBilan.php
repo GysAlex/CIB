@@ -27,7 +27,7 @@ class ProjectBilan extends Page
 
     protected string $view = 'filament.client.pages.project-bilan';
     protected static string|BackedEnum|null $navigationIcon = Heroicon::DocumentCheck;
-    protected static ?string $title = 'Bilan des mes projets';
+    protected static ?string $title = 'Bilan de mes projets';
 
     public function mount()
     {

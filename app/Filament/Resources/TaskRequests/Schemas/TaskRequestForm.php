@@ -33,25 +33,19 @@ class TaskRequestForm
                         Select::make('priority')
                             ->options(['low' => 'Basse', 'medium' => 'Normale', 'high' => 'Haute'])
                             ->disabled(),
-                    ]),
 
-                Section::make('Réponse à apporter')
-                    ->schema([
-                        Textarea::make('admin_comment')
-                            ->label('Commentaire / Justification')
-                            ->placeholder('Expliquez ici pourquoi vous acceptez ou refusez la demande...')
-                            ->rows(3),
+                        Section::make('Détails de la demande')
+                        ->schema([
+                            TextEntry::make('description')
+                            ->placeholder('Aucun détails')
+                        ]),
+                        Section::make('Décision de l\'administration')
+                        ->schema([
+                            TextEntry::make('admin_comment')
+                            ->placeholder('en attente')
+                        ])
+                    ])->columnSpanFull(),
 
-                        Select::make('status')
-                            ->label('Décision')
-                            ->options([
-                                'en_attente' => 'En attente',
-                                'approuve' => 'Approuver',
-                                'rejete' => 'Rejeter',
-                            ])
-                            ->required()
-                            ->native(false),
-                    ]),
             ]);
     }
 }

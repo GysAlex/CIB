@@ -33,6 +33,7 @@ class ClientPanelProvider extends PanelProvider
             ->login()
             ->profile()
             ->databaseNotifications()
+            ->databaseNotificationsPolling('30s')
             ->spa()
             ->colors([
                 'primary' => Color::Blue,

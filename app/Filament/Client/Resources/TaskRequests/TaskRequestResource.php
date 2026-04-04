@@ -15,6 +15,8 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class TaskRequestResource extends Resource
 {
@@ -52,6 +54,15 @@ class TaskRequestResource extends Resource
         ];
     }
 
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('client_id', Auth::id())
+            ->latest();
+    }
+
+
     public static function getPages(): array
     {
         return [
@@ -60,5 +71,18 @@ class TaskRequestResource extends Resource
             'view' => ViewTaskRequest::route('/{record}'),
             'edit' => EditTaskRequest::route('/{record}/edit'),
         ];
+    }
+
+
+    public static function getNavigationBadge(): ?string
+    {
+        return static::getModel()::where('client_id', auth()->id())
+            ->where('status', 'en_attente')
+            ->count() ?: null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'warning';
     }
 }

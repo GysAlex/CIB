@@ -13,7 +13,10 @@ class ViewTaskRequest extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            EditAction::make(),
+            EditAction::make()
+            ->label('Valider / Rejeter'),
         ];
     }
+    
+    protected static ?string $title = "Détails de la demande";
 }

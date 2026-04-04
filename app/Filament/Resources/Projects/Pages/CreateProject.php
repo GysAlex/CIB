@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Projects\Pages;
 use App\Filament\Resources\Projects\ProjectResource;
 use App\Models\TaskTemplate;
 use Filament\Resources\Pages\CreateRecord;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class CreateProject extends CreateRecord
@@ -17,6 +18,13 @@ class CreateProject extends CreateRecord
     }
 
 
+    protected function mutateFormDataBeforeCreate(array $data): array
+    {
+        $data['creator_id'] = Auth::id();
+
+        return $data;
+    }
+
     protected function afterCreate(): void
     {
         $project = $this->record;
@@ -26,10 +34,10 @@ class CreateProject extends CreateRecord
             ->flatten()
             ->toArray();
 
-        Log::info('les id sélectionnés', [
-            'tableau origine' => collect($this->data)->flatten()
+        // Log::info('les id sélectionnés', [
+        //     'tableau origine' => collect($this->data)->flatten()
             
-        ]);
+        // ]);
 
         if (!empty($selectedTaskIds)) {
             $taskTemplates = TaskTemplate::with('categoryTemplate')
@@ -38,9 +46,9 @@ class CreateProject extends CreateRecord
 
             $groupedTasks = $taskTemplates->groupBy('category_template_id');
 
-            Log::info('les id sélectionnés', [
-                'Les tâches groupés' => $groupedTasks,
-            ]);
+            // Log::info('les id sélectionnés', [
+            //     'Les tâches groupés' => $groupedTasks,
+            // ]);
 
             foreach ($groupedTasks as $catTemplateId => $tasks) {
                 $catTemplate = $tasks->first()->categoryTemplate;

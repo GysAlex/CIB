@@ -13,6 +13,9 @@ return new class extends Migration {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('creator_id')
+                    ->constrained('users')
+                    ->cascadeOnDelete();
             $table->foreignId('client_id')
                 ->nullable()
                 ->constrained('users')
@@ -36,3 +39,4 @@ return new class extends Migration {
         Schema::dropIfExists('projects');
     }
 };
+ 

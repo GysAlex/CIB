@@ -28,7 +28,8 @@ class Project extends Model
         'status',
         'start_date',
         'end_date',
-        'client_id'
+        'client_id',
+        'creator_id'
     ];
 
     protected $casts = [
@@ -36,6 +37,11 @@ class Project extends Model
         'end_date' => 'date'
     ];
 
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'creator_id');
+    }
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
