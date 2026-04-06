@@ -15,7 +15,7 @@ Le client **{{ $client->name }}** vient de soumettre **{{ $tasks->count() }}** n
 ---
 
 @component('mail::button', ['url' => $url])
-Accéder aux demandes sur BluePay
+Accéder aux demandes sur CiB Mananger
 @endcomponent
 
 Merci,<br>
