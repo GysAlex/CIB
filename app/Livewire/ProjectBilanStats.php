@@ -4,11 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Project;
 use App\Models\Submission;
-use App\Models\Task;
 use Filament\Widgets\StatsOverviewWidget;
 use Filament\Widgets\StatsOverviewWidget\Stat;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\On;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -31,18 +30,9 @@ class ProjectBilanStats extends StatsOverviewWidget
 
         $project = Project::with('tasks')->find($this->projectId);
 
-        $sumissionIds =  [];
-
-        foreach($project->tasks as $t)
-        {
-            foreach($t->submissions as $s)
-            {
-                $sumissionIds[] = $s->value('id');
-            }
-        }
-
         if (!$project)
             return [];
+
 
         $totalTasks = $project->tasks->count();
         $completedTasks = $project->tasks->where('status', 'valide')->count();
@@ -52,19 +42,37 @@ class ProjectBilanStats extends StatsOverviewWidget
         $progress = $totalTasks > 0 ? round(($completedTasks / $totalTasks) * 100) : 0;
 
 
-        $filesCount = Media::whereIn('model_id', $sumissionIds)
-            ->count();
+        $filesCount = Media::whereHasMorph('model', [Submission::class], function (Builder $query) {
+            $query->where('status', 'done')
+                ->whereHas(
+                    'task.project',
+                    function (Builder $q) {
+
+
+                        if ($this->projectId) {
+                            $q->where('id', $this->projectId);
+                        }
+                        if (Auth::user()->hasRole('client')) {
+                            $q->where('client_id', Auth::id());
+                        }
+                        
+
+                    }
+
+                );
+        })
+        ->count();
 
 
         return [
-            
+
             Stat::make('Avancement Global', "{$progress}%")
                 ->description("{$completedTasks} sur {$totalTasks} missions terminées")
                 ->descriptionIcon($progress === 100 ? 'heroicon-m-check-badge' : 'heroicon-m-chart-bar')
                 ->color($progress === 100 ? 'success' : 'primary')
                 ->chart([$progress, 100]),
 
-            
+
             Stat::make('Missions Restantes', $remainingTasks->count())
                 ->description(function () use ($remainingTasks) {
                     if ($remainingTasks->isEmpty())
@@ -98,5 +106,5 @@ class ProjectBilanStats extends StatsOverviewWidget
 
     //     dd($taskId);
     // }
-    
+
 }

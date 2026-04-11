@@ -18,5 +18,5 @@ class ViewTaskRequest extends ViewRecord
         ];
     }
     
-    protected static ?string $title = "Détails de la demande";
+
 }

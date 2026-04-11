@@ -7,8 +7,8 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         @forelse ($getMedia() as $file)
-            <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 transition hover:border-primary-500">
-                <div class="p-2 bg-primary-50 rounded-lg dark:bg-primary-950">
+            <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white shadow-sm transition hover:border-primary-500">
+                <div class="p-2 bg-primary-50 rounded-lg">
                     @php
                         $icon = match(strtolower($file->extension)) {
                             'pdf' => 'heroicon-o-document-text',
@@ -19,12 +19,12 @@
                     @endphp
                     <x-filament::icon 
                         :icon="$icon" 
-                        class="w-6 h-6 text-primary-600 dark:text-primary-400" 
+                        class="w-6 h-6 text-primary-600" 
                     />
                 </div>
 
                 <div class="flex-1 min-w-0">
-                    <p class="text-xs font-semibold text-gray-900 truncate dark:text-white">
+                    <p class="text-xs font-semibold text-gray-900 truncate">
                         {{ $file->name }}
                     </p>
                     <p class="text-xs text-gray-500">

@@ -6,6 +6,7 @@ use App\Filament\Client\Resources\Projects\Pages\Dashboard;
 use App\Filament\Client\Resources\TaskRequests\Pages\CreateTaskRequest;
 use App\Filament\Client\Widgets\ClientProjectTable;
 use App\Filament\Client\Widgets\ClientStatsOverview;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,7 +31,6 @@ class ClientPanelProvider extends PanelProvider
             ->id('client')
             ->path('client')
             ->viteTheme('resources/css/filament/client/theme.css')
-            ->login()
             ->profile()
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
@@ -47,6 +47,11 @@ class ClientPanelProvider extends PanelProvider
             ->widgets([
                 ClientProjectTable::class,
                 ClientStatsOverview::class,
+            ])
+            ->userMenuItems([
+                'logout' => function(Action $action){
+                    route('logout');
+                },
             ])
             ->middleware([
                 EncryptCookies::class,

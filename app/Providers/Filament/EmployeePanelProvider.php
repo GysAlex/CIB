@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Employee\Resources\Tasks\Pages\ListTasks;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -30,7 +31,11 @@ class EmployeePanelProvider extends PanelProvider
             ->id('employee')
             ->path('employee')
             ->viteTheme('resources/css/filament/employee/theme.css')
-            ->login()
+            ->userMenuItems([
+                'logout' => function(Action $action){
+                    route('logout');
+                },
+            ])
             ->spa()
             ->profile()
             ->renderHook(PanelsRenderHook::PAGE_HEADER_WIDGETS_AFTER, 

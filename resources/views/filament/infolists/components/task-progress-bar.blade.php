@@ -28,7 +28,7 @@
             
         </div>
 
-        <div class="w-full bg-gray-200 rounded-full h-2.5 relative flex flex-col dark:bg-gray-700">
+        <div class="w-full bg-gray-200 rounded-full h-2.5 relative flex flex-col">
             <div class="h-2.5 rounded-full absolute transition-all duration-500"
                 style="width: {{ $percentage }}%; background-color: {{ $color }};">
             </div>

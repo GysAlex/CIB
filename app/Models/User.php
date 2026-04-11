@@ -93,6 +93,11 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         return $this->hasOne(Submission::class)->latestOfMany();
     }
 
+    public function submissions(): HasMany
+    {
+        return $this->hasMany(Submission::class);
+    }
+
     public function hasRole(string $role): bool
     {
         return $this->roles->pluck('name')->contains($role);

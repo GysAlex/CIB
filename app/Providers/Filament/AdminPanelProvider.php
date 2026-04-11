@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\ProjectBilan;
+use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -35,7 +36,11 @@ class AdminPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->profile()
-            ->login()
+            ->userMenuItems([
+                'logout' => function(Action $action){
+                    route('logout');
+                },
+            ])
             ->colors([
                 'primary' => Color::Blue,
             ])

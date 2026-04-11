@@ -61,7 +61,6 @@ class CreateTaskRequest extends CreateRecord
             }
         }
 
-
         // Nettoyage de la "coquille"
         $this->record->delete();
 

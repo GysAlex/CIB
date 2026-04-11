@@ -17,17 +17,17 @@
     </div>
 
     @if($files->isEmpty())
-        <div class="flex flex-col items-center justify-center p-12 border-2 border-dashed border-gray-200 rounded-xl dark:border-gray-800">
+        <div class="flex flex-col items-center justify-center p-12 border-2 border-dashed border-gray-200 rounded-xl">
             <x-heroicon-o-document-magnifying-glass class="w-12 h-12 text-gray-300 mb-2" />
             <p class="text-gray-500 italic">Aucun fichier archivé.</p>
         </div>
     @else
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
             @foreach($files as $file)
-                <div class="flex flex-col bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-primary-500 transition-colors overflow-hidden group">
+                <div class="flex flex-col bg-white border border-gray-200 rounded-lg hover:border-primary-500 transition-colors overflow-hidden group">
                     
                     {{-- Zone Icône Réduite --}}
-                    <div class="h-24 flex items-center justify-center bg-gray-50 dark:bg-gray-800/50 border-b border-gray-100 dark:border-gray-800">
+                    <div class="h-24 flex items-center justify-center bg-gray-50 border-b border-gray-100">
                         @php
                             $icon = match($file->extension) {
                                 'pdf' => ['icon' => 'heroicon-o-document-text', 'color' => 'text-red-500'],
@@ -41,25 +41,25 @@
 
                     {{-- Détails --}}
                     <div class="p-3 grow">
-                        <p class="text-xs font-semibold truncate text-gray-700 dark:text-gray-300 mb-1" title="{{ $file->name }}">
+                        <p class="text-xs font-semibold truncate text-gray-700 mb-1" title="{{ $file->name }}">
                             {{ $file->name }}
                         </p>
                         <div class="flex justify-between items-center text-[10px] text-gray-400 uppercase">
                             <span>{{ number_format($file->size / 1024 / 1024, 2) }} MB</span>
-                            <span class="bg-gray-100 dark:bg-gray-800 px-1 rounded">{{ $file->extension }}</span>
+                            <span class="bg-gray-100 px-1 rounded">{{ $file->extension }}</span>
                         </div>
                     </div>
 
                     {{-- Barre d'actions discrète --}}
-                    <div class="flex border-t border-gray-100 dark:border-gray-800">
+                    <div class="flex border-t border-gray-100">
                         <button 
                             wire:click="download({{ $file->id }})"
-                            class="flex-1 p-2 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-500 border-r border-gray-100 dark:border-gray-800 transition-colors"
+                            class="flex-1 p-2 hover:bg-gray-50 text-gray-500 border-r border-gray-100 transition-colors"
                             title="Télécharger"
                         >
                             <x-heroicon-m-arrow-down-tray class="w-4 h-4 mx-auto" />
                         </button>
-                        <button title="Plus d'informations" wire:click="mountAction('viewDetails', { record: {{ $file->id }} })" class="flex-1 p-2 bg-transparent flex justify-center text-xs items-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                        <button title="Plus d'informations" wire:click="mountAction('viewDetails', { record: {{ $file->id }} })" class="flex-1 p-2 bg-transparent flex justify-center text-xs items-center hover:bg-gray-50 transition-colors">
                             <x-heroicon-o-information-circle class="w-4 h-4 mx-auto text-blue-600" />
                         </button>
                     </div>

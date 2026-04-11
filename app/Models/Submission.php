@@ -74,6 +74,10 @@ class Submission extends Model implements HasMedia
         return $this->hasOne(SubmissionFeedback::class);
     }
 
+    public function isValid(): bool
+    {
+        return $this->status === 'done';
+    }
 
     public function task(): BelongsTo
     {
