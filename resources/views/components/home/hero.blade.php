@@ -4,26 +4,27 @@
     </div>
 
 
-    <div class="lg:max-w-5xl max-w-4xl px-5 lg:px-3 relative z-2 flex mx-auto justify-center flex-col gap-5 pt-30  mb-15">
-        <div class="flex items-center justify-center gap-2 border border-white py-2 px-3 rounded-4xl w-fit mx-auto ">
-            <span class="rounded-full size-2 bg-white animate-pulse">
-
+    <div
+        class="lg:max-w-5xl max-w-4xl px-5 lg:px-3 relative z-2 flex mx-auto justify-center flex-col gap-5 pt-30  mb-10">
+        <div
+            class="flex items-center justify-center gap-2 border border-white/80 py-2 px-4 rounded-4xl w-fit mx-auto backdrop-blur-sm">
+            <span class="rounded-full size-2 bg-gcp-primary-color animate-pulse"></span>
+            <span class="text-[12px] text-gcp-primary-color  tracking-wider text-center font-bold">
+                Le futur du BTP est ici
             </span>
-            <span class="text-[12px] text-white capitalize text-center" style="color: white !important;">
-                Lorem ipsum dolor sit amet consectetur
-            </span>
         </div>
 
-        <div class="text-center font-medium text-white text-4xl lg:text-5xl leading-tight">
-            Lorem ipsum <span class="text-gcp-primary-color">dolor</span> sit, amet consectetur cunsite <span class="text-gcp-primary-color">adipisicing</span>  amet
-        </div>
+        <h1 class="text-center capitalize mainText gcp-headline font-medium text-white text-5xl lg:text-6xl leading-tight">
+            Bâtissez plus intelligemment avec CIB Construction
+        </h1>
 
-        <div class="text-center text-muted max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non repellat reiciendis earum eveniet voluptatum tempora itaque. In aliquam illo facilis laudantium dolore quasi eaque
-        </div>
+        <p class="text-center secondText text-muted leading-relaxed text-lg max-w-3xl mx-auto">
+            L'expertise en ingénierie civile au service de vos ambitions. Nous transformons vos projets de construction
+            grâce au suivi digital et à l'innovation durable au Cameroun.
+        </p>
 
-        <div class="w-fit mx-auto">
-            <button class="hover:bg-white py-3 px-4 cursor-pointer bg-white/90 transition-all flex items-center gap-2 group ">
+        <div class="w-fit mx-auto" id="main-cta">
+            <button class="py-3 px-4 cursor-pointer hero-button transition-all flex items-center gap-2 group">
                 <span class="text-[14px]">Obtenir un devis</span>
                 <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all duration-400"></i>
             </button>

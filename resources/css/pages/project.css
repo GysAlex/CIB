@@ -1,0 +1,19 @@
+
+.h-bg {
+    top: 16px;
+    min-width: 400px;
+    transform-origin: center;
+    position: absolute;
+    height: 60%;
+    background-color: rgba(1, 2, 31, 0.4);
+    left: 50%;
+    transform: translateX(-48%);
+    z-index: -1;
+}
+
+@media (width <=768px) {
+    .h-bg {
+        min-width: 0%;
+    }
+
+}

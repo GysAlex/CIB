@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Accueil</title>
+        <title>
+            @yield('title')
+        </title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -27,15 +29,16 @@
 
             requestAnimationFrame(raf)
         </script>
+
+        @stack('scripts')
     </head>
     <body class="min-h-screen bg-background">
 
-
-        @include('components.home.header')
+        @yield('header')
 
         <main role="main" class="">
 
-            @include('components.home.hero')
+            @yield('section')
 
         </main>
 
