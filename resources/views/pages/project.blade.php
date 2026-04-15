@@ -10,6 +10,7 @@
 
 @section('section')
     @include('components.project.hero')
+    @include('components.project.recent')
 @endsection
 
 

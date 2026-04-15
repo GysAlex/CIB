@@ -2,7 +2,7 @@
     
     <div class="hero-badge flex items-center gap-2 border border-border py-2 px-4 rounded-full w-fit">
         <span class="size-1.5 bg-gcp-secondary-color rounded-full"></span>
-        <span class="text-[12px] text-gcp-gray-800 uppercase tracking-widest font-bold">Projets</span>
+        <span class="text-[12px] text-gcp-gray-800 uppercase font-mediun">Projets</span>
     </div>
 
     <div class="flex flex-col gap-6 text-center lg:max-w-5xl max-w-4xl">
