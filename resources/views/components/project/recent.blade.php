@@ -30,7 +30,7 @@
     ];
 @endphp
 
-<div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-30 pb-20" x-data="{ 
+<div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20" x-data="{ 
     currentIndex: 0, 
     projects: {{ json_encode($recentProjects) }},
     next (){
@@ -101,16 +101,16 @@
 
             <div class="gap-1 flex flex-row justify-end">
                 <button @click="prev()"
-                    class="hover:bg-gcp-primary-color py-3 px-4 border border-gcp-primary-color/70 disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed cursor-pointer bg-white/90 text-gcp-primary-color transition-all flex items-center gap-2 group "
+                    class="hover:bg-gcp-primary-color hover:text-white py-3 px-4 border border-gcp-primary-color/70 disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed text-gcp-primary-color cursor-pointer bg-white/90 disabled:text-gray-300 transition-all flex items-center gap-2 group "
                     :disabled="currentIndex == 0">
                     <i
-                        class="fa-solid fa-arrow-left  group-hover:text-white group-hover:-translate-x-1 transition-all duration-400"></i>
+                        class="fa-solid fa-arrow-left duration-400"></i>
                 </button>
                 <button @click="next()"
-                    class="hover:bg-gcp-primary-color py-3 px-4 border border-gcp-primary-color/70 cursor-pointer bg-white/90 text-gcp-primary-color disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed transition-all flex items-center gap-2 group "
+                    class="hover:bg-gcp-primary-color hover:text-white py-3 px-4 border border-gcp-primary-color/70 disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed text-gcp-primary-color cursor-pointer bg-white/90 disabled:text-gray-300 transition-all flex items-center gap-2 group "
                     :disabled="currentIndex == 2">
                     <i
-                        class="fa-solid fa-arrow-right group-hover:text-white group-hover:translate-x-1 transition-all duration-400"></i>
+                        class="fa-solid fa-arrow-right duration-400"></i>
                 </button>
 
             </div>

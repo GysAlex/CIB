@@ -11,19 +11,17 @@
     <div class="h-bg rounded-3xl backdrop-blur-sm">
 
     </div>
+    <div class="h-bg2 rounded-3xl backdrop-blur-sm">
+
+    </div>
     <div class="mx-auto px-4 sm:px-6 h-full lg:px-8 pt-2 max-w-7xl">
         <div class="flex items-center justify-between h-16">
 
             <div class="shrink-0">
                 <a href="/" class="flex items-center space-x-2 group" aria-label="CIB Manager Home">
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('images/gcp.jpg') }}" alt="Logo"
-                            class="h-12 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
-                        <div
-                            class="flex flex-col text-[12px] font-extrabold leading-tight mt-1 uppercase tracking-tighter">
-                            <span class="text-white">Construction</span>
-                            <span class="text-white">Intelligente</span>
-                        </div>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo"
+                            class="h-20 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
                     </div>
                 </a>
             </div>

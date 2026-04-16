@@ -11,13 +11,16 @@ function headerAnimation() {
     const headerBg = document.querySelector('.h-bg');
     const heroSection = document.querySelector('.hero-section');
 
+    const navItems = gsap.utils.toArray(document.querySelectorAll('nav a'))
+
     if (!headerBg || !heroSection) return;
 
     gsap.to(headerBg, {
         width: "105%",
         height: "100%",
+        opacity: 1,
         top: 0,
-        backgroundColor: "rgba(3, 3, 32, 0.6)",
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
         borderRadius: 0,
         ease: "none",
         scrollTrigger: {
@@ -28,6 +31,21 @@ function headerAnimation() {
             // markers: true,     
         }
     });
+
+
+    gsap.to(navItems, {
+        color: (i) => i ==0 ? "rgb(10, 10, 10)" : "#717182",
+        stagger: .2,
+        scrollTrigger: {
+            trigger: heroSection,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            // markers: true,     
+        }
+    });
+
+
 }
 
 function heroAnimation() {

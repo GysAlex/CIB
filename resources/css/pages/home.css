@@ -97,6 +97,7 @@
     transform-origin: center;
     position: absolute;
     height: 60%;
+    opacity: 0;
     background-color: rgba(255, 255, 255, 0.4);
     left: 50%;
     transform: translateX(-48%);
@@ -105,6 +106,25 @@
 
 @media (width <=768px) {
     .h-bg {
+        min-width: 0%;
+    }
+
+}
+
+.h-bg2 {
+    top: 16px;
+    min-width: 400px;
+    transform-origin: center;
+    position: absolute;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.6);
+    left: 50%;
+    transform: translateX(-48%);
+    z-index: -1;
+}
+
+@media (width <=768px) {
+    .h-bg2 {
         min-width: 0%;
     }
 

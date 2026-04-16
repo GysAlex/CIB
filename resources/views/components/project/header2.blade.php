@@ -11,19 +11,23 @@
     <div class="h-bg rounded-3xl backdrop-blur-sm">
 
     </div>
+    <div class="h-bg2 rounded-3xl backdrop-blur-sm">
+
+    </div>
     <div class="mx-auto px-4 sm:px-6 h-full lg:px-8 pt-2 max-w-7xl">
         <div class="flex items-center justify-between h-16">
 
             <div class="shrink-0">
                 <a href="/" class="flex items-center space-x-2 group" aria-label="CIB Manager Home">
                     <div class="flex items-center gap-2">
-                        <img src="{{ asset('images/gcp.jpg') }}" alt="Logo"
-                            class="h-12 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
-                        <div
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo"
+                            class="h-20 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
+                        {{-- <div
                             class="flex flex-col text-[12px] font-extrabold leading-tight mt-1 uppercase tracking-tighter">
                             <span class="text-gcp-primary-color">Construction</span>
                             <span class="text-gcp-secondary-color">Intelligente</span>
-                        </div>
+                            
+                        </div> --}}
                     </div>
                 </a>
             </div>
@@ -35,7 +39,7 @@
             <nav class="hidden md:flex items-center gap-10 rounded-2xl">
                 @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
                     <a href="{{ $url }}"
-                        class="hover:text-white px-1 py-2 text-sm font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-white' : 'text-muted' }}">
+                        class="hover:text-foreground px-1 py-2 text-sm font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-foreground' : 'text-muted-foreground' }}">
                         {{ $label }}
                         <span
                             class="absolute bottom-1 left-0 w-full h-0.5 bg-gcp-primary-color scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'scale-x-100' : '' }}"></span>
