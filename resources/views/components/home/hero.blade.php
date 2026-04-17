@@ -7,9 +7,9 @@
     <div
         class="lg:max-w-5xl max-w-4xl px-5 lg:px-3 relative z-2 flex mx-auto justify-center flex-col gap-5 pt-30  mb-10">
         <div
-            class="flex items-center justify-center gap-2 border border-white/80 py-2 px-4 rounded-4xl w-fit mx-auto backdrop-blur-sm">
-            <span class="rounded-full size-2 bg-gcp-primary-color animate-pulse"></span>
-            <span class="text-[12px] text-gcp-primary-color  tracking-wider text-center font-bold">
+            class="flex items-center justify-center border border-white py-2 px-4 gap-2 rounded-full w-fit mx-auto backdrop-blur-sm">
+            <span class="rounded-full size-1.5 bg-gcp-primary-color"></span>
+            <span class="text-[12px] text-muted  tracking-wider text-center font-bold">
                 Le futur du BTP est ici
             </span>
         </div>

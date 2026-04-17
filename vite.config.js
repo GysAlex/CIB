@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/css/pages/home.css',
                 'resources/js/pages/project.js',
                 'resources/css/pages/project.css',
+                'resources/js/pages/contact.js',
+                'resources/css/pages/contact.css',
                 'resources/css/filament/employee/theme.css'
             ],
             refresh: true,

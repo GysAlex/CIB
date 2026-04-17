@@ -15,7 +15,7 @@ Route::get('/project', function () {
 
 
 Route::get('/contact', function () {
-    return view('welcome');
+    return view('pages.contact');
 })->name('contact');
 
 
