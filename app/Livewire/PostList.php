@@ -12,13 +12,11 @@ class PostList extends Component
 {
     use WithPagination;
 
-    #[Url]
+    #[Url(as: 'q')]
     public $search = '';
 
     #[Url(as: 'category')]
     public $selectedCategory = null;
-
-    // Réinitialise la pagination lors d'une recherche ou changement de catégorie
 
     public function selectCategory($categoryId)
     {
@@ -32,13 +30,11 @@ class PostList extends Component
         $posts = BlogPost::with(['blogCategory', 'media'])
             ->published()
             ->where('published_at', '<=', now())
-            ->when($this->selectedCategory, function ($query) {
-                $query->where('blog_category_id', $this->selectedCategory);
-            })
-            ->when($this->search, function ($query) {
+            ->when($this->selectedCategory, fn ($query) => $query->where('blog_category_id', $this->selectedCategory))
+            ->when($this->search, fn ($query) =>
                 $query->where('title', 'like', '%' . $this->search . '%')
-                    ->orWhere('content', 'like', '%' . $this->search . '%');
-            })
+                    ->orWhere('content', 'like', '%' . $this->search . '%')
+            )
             ->latest('published_at')
             ->paginate(6);
 

@@ -2,7 +2,7 @@
 
 
 @section('title')
-    Blog
+   {{ $post->title }}
 @endsection
 
 @section('header')
@@ -10,11 +10,15 @@
 @endsection
 
 @section('section')
-    @include('components.blog.hero')
-    @livewire('post-list')
+
+    @include('components.blog-show.container')
+
+    @include('components.project.cta')
+
     @include('components.home.footer')
+
 @endsection
 
 @push('scripts')
-    @vite(['resources/js/pages/blog.js', 'resources/css/pages/blog.css' ])    
+    @vite(['resources/js/pages/blog-show.js', 'resources/css/pages/blog-show.css' ])    
 @endpush

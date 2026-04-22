@@ -14,7 +14,11 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         <!-- Styles / Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])        
+        @if (request()->routeIs('blog'))
+            @vite(['resources/css/app.css'])
+        @else
+            @vite(['resources/css/app.css', 'resources/js/app.js'])        
+        @endif
         
         <script src="https://unpkg.com/lenis@1.3.17/dist/lenis.min.js"></script> 
 

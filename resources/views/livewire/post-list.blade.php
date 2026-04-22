@@ -18,7 +18,7 @@
             @endforeach
         </nav>
 
-        <div class="relative w-full md:w-64">
+        <form class="relative w-full md:w-64">
             <input 
                 wire:model.live.debounce.300ms="search"
                 type="text" 
@@ -26,10 +26,10 @@
                 class="w-full bg-white ps-3 border-b border-border focus:border-gcp-primary-color outline-none py-2 text-sm"
             >
             <i class="fa-solid absolute fa-magnifying-glass top-1/2 -translate-y-1/2 right-2"></i>
-        </div>
+        </form>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
         @forelse($posts as $post)
             <article class="group" wire:key="post-{{ $post->id }}">
                 <a href="{{ route('blog.show', $post->slug) }}" class="block overflow-hidden rounded-2xl mb-6 aspect-16/10">
@@ -40,11 +40,13 @@
                     >
                 </a>
                 
-                <div class="flex flex-col gap-4">
-                    <h2 class="text-2xl font-bold text-foreground leading-tight group-hover:text-gcp-primary-color transition-colors">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-2xl font-bold text-foreground line-clamp-1 leading-tight group-hover:text-gcp-primary-color transition-colors">
                         <a href="{{ route('blog.show', $post->slug) }}">{{ $post->title }}</a>
                     </h2>
-                    
+                    <p class="text-muted/65 line-clamp-2" style="">
+                        {!! $post->content !!}
+                    </p>
                     <div class="flex items-center justify-between">
                         <span class="px-4 py-1.5 border border-border rounded-full text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                             {{ $post->blogCategory->name }}
