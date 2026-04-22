@@ -15,48 +15,21 @@
         </p>
     </div>
     <div class="mt-8" x-data="{
-    featuredPost: {
-        id: 1,
-        slug: 'choisir-le-bon-entrepreneur',
-        title: 'Comment choisir le bon entrepreneur pour votre projet de construction',
-        category: 'Guide Client',
-        date: '10 Juillet 2025',
-        author: 'Albert Sandy',
-        readTime: '10 min',
-        image: '{{ asset('images/hero4.jpg') }}'
-    },
-    posts: [
-        {
-            id: 2,
-            slug: 'planifier-construction-commerciale',
-            title: 'Planifier votre projet commercial de manière efficace et rentable',
-            category: 'Conseils Construction',
-            date: '21 Mai 2025',
-            author: 'Albert Sandy',
-            readTime: '5 min'
-        },
-        {
-            id: 3,
-            slug: 'importance-batiment-durable-2025',
-            title: 'Pourquoi la construction durable et efficace est cruciale en 2026',
-            category: 'Bâtiment Vert',
-            date: '18 Mars 2025',
-            author: 'Jordy Alba',
-            readTime: '7 min'
-        }
-    ]
-}">
+        featuredPost: {{ json_encode($featuredPost) }},
+        posts: {{ json_encode($otherPosts) }}
+    }">
+        
+        @if($featuredPost)
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
             <article class="lg:col-span-7 group">
-                <a :href="'/blog/' + featuredPost.slug" class="block relative overflow-hidden rounded-2xl mb-6">
+                <a :href="'/blog/' + featuredPost.slug" class="block relative overflow-hidden rounded-2xl mb-6 shadow-sm">
                     <img :src="featuredPost.image" :alt="featuredPost.title"
                         class="w-full h-100 object-cover transition-transform duration-500 group-hover:scale-105">
                 </a>
 
                 <div class="flex items-center justify-between mb-4">
-                    <span
-                        class="px-3 py-1 border border-border rounded-full text-xs font-semibold text-muted-foreground uppercase tracking-wide"
+                    <span class="px-3 py-1 border border-border rounded-full text-xs font-semibold text-muted-foreground uppercase tracking-wide"
                         x-text="featuredPost.category"></span>
                     <time class="text-sm text-muted-foreground" x-text="featuredPost.date"></time>
                 </div>
@@ -75,10 +48,9 @@
 
             <div class="lg:col-span-5 flex flex-col gap-8">
                 <template x-for="(post, index) in posts" :key="index">
-                    <article class="group border-b border-border pb-8 last:border-0">
+                    <article class="group border-b border-border pb-8 last:border-0 transition-all hover:pl-2">
                         <div class="flex items-center justify-between mb-4">
-                            <span
-                                class="px-3 py-1 border border-border rounded-full text-xs font-semibold text-muted-foreground uppercase tracking-wide"
+                            <span class="px-3 py-1 border border-border rounded-full text-xs font-semibold text-muted-foreground uppercase tracking-wide"
                                 x-text="post.category"></span>
                             <time class="text-sm text-muted-foreground" x-text="post.date"></time>
                         </div>
@@ -98,5 +70,8 @@
             </div>
 
         </div>
+        @else
+            <p class="text-center text-muted-foreground">Aucun article disponible pour le moment.</p>
+        @endif
     </div>
 </div>

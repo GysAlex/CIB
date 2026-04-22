@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+Route::get('/',[HomeController::class, 'index'])->name('home');
 
 
 Route::get('/project', function () {
@@ -21,9 +21,17 @@ Route::get('/contact', function () {
 
 
 Route::get('/blog', function () {
-    return view('welcome');
+    return view('pages.blog');
 })->name('blog');
 
+
+Route::get('/blog/{slug}', function(){
+    return view('pages.blog');
+})->name('blog.show');
+
+Route::get('/download-media/{media}', [DownloadController::class, 'show'])
+    ->name('media.download')
+    ->middleware(['auth']); // Sécurise l'accès aux plans
 
 Route::get('/dashboard', function () {
     return view('dashboard');

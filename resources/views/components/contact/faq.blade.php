@@ -22,8 +22,8 @@
         ],
     ];
 @endphp
-<section class="py-24 bg-white" x-data="{ activeAccordion: null }">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="bg-white" x-data="{ activeAccordion: null }">
+    <div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
         
         <div class="flex flex-col items-center text-center gap-4 mb-16">
             <span
