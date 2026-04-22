@@ -33,9 +33,10 @@
             </div>
 
             @php
-                $routeName = request()->route()->getName();
-            @endphp
+                $routeName = explode('.', request()->route()->getName())[0];
 
+                $contains = !\Illuminate\Support\Str::contains(route('blog'), $routeName)
+            @endphp
             <nav class="hidden md:flex items-center gap-10 rounded-2xl">
                 @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
                     <a href="{{ $url }}"
