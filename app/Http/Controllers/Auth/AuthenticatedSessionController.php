@@ -28,6 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+
         $role = auth()->user()->roles->first()->name;
 
         return redirect()->intended(

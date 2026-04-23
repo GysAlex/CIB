@@ -5,6 +5,8 @@
     font-family: 'Inter';
 }
 
+[x-cloak] { display: none !important; }
+
 :root {
     --font-size: 15px;
     --max-width-size: 1250px;
