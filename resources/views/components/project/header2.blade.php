@@ -26,7 +26,7 @@
                             class="flex flex-col text-[12px] font-extrabold leading-tight mt-1 uppercase tracking-tighter">
                             <span class="text-gcp-primary-color">Construction</span>
                             <span class="text-gcp-secondary-color">Intelligente</span>
-                            
+
                         </div> --}}
                     </div>
                 </a>
@@ -50,11 +50,20 @@
             </nav>
 
             <div class="hidden md:block">
-                <a href="{{ route('login') }}"
-                    class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
-                    <i class="fa-solid fa-user"></i>
-                    mon espace
-                </a>
+                @auth
+                    <a href="{{ route('personnal_space') }}"
+                        class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        Bienvenu {{ auth()->user()->name }}
+                    </a>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}"
+                        class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        mon espace
+                    </a>
+                @endguest
             </div>
 
             <button @click="toggleMobileMenu()" class="md:hidden p-2 text-foreground">
@@ -75,31 +84,28 @@
         <div class="fixed h-[calc(100dvh-64px)] top-16 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
             style="view-transition-name: mobile-menu">
             <nav class="flex flex-col space-y-8">
-                <a href="#hero" @click="toggleMobileMenu()"
-                    class="tracking-tighter text-foreground hover:text-gcp-primary-color transition-colors">
-                    Accueil
-                </a>
-                <a href="#services" @click="toggleMobileMenu()"
-                    class="tracking-tighter text-foreground hover:text-gcp-primary-color transition-colors">
-                    Services
-                </a>
-
-                <a href="#about" @click="toggleMobileMenu()"
-                    class="tracking-tighter text-foreground hover:text-gcp-primary-color transition-colors">
-                    A propos
-                </a>
-
-                <a href="#final-cta" @click="toggleMobileMenu()"
-                    class="tracking-tighter text-foreground hover:text-gcp-primary-color transition-colors">
-                    Contacts
-                </a>
+                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
+                    <a @click="toggleMobileMenu()" href="{{ $url }}"
+                        class="hover:text-gcp-primary-color px-1 py-2 font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-gcp-primary-color font-bold' : 'text-muted-foreground' }}">
+                        {{ $label }}
+                    </a>
+                @endforeach
 
                 <div class="">
-                    <a href="{{ route('login') }}"
-                        class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
-                        <i class="fa-solid fa-user"></i>
-                        mon espace
-                    </a>
+                    @auth
+                        <a href="{{ route('personnal_space') }}"
+                            class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                            <i class="fa-solid fa-user"></i>
+                            Bienvenu {{ auth()->user()->name }}
+                        </a>
+                    @endauth
+                    @guest
+                        <a href="{{ route('login') }}"
+                            class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                            <i class="fa-solid fa-user"></i>
+                            mon espace
+                        </a>
+                    @endguest
                 </div>
             </nav>
 

@@ -30,10 +30,10 @@
                 $routeName = request()->route()->getName();
                 $path = request()->path();
 
-                                    
+
             @endphp
             <nav class="hidden md:flex items-center gap-10 rounded-2xl">
-                @foreach(['Accueil' =>  route('home') , 'Projets' =>  route('project'), 'Blog' =>  route('blog'), 'Contact' =>  route('contact') ] as $label => $url)
+                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
                     <a href="{{ $url }}"
                         class="hover:text-white px-1 py-2 text-sm font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-white' : 'text-muted' }} {{ $path === "/" && $label == 'Accueil' ? 'text-white' : '' }}">
                         {{ $label }}
@@ -45,11 +45,21 @@
             </nav>
 
             <div class="hidden md:block">
-                <a href="{{ route('login') }}"
-                    class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
-                    <i class="fa-solid fa-user"></i>
-                    mon espace
-                </a>
+                @auth
+                    <a href="{{ route('personnal_space') }}"
+                        class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        Bienvenu {{ auth()->user()->name }}
+                    </a>
+                @endauth
+                @guest
+                    <a href="{{ route('login') }}"
+                        class="bg-gcp-primary-color capitalize text-[13px] text-white px-5 py-2.5 rounded-lg text-sm font-bold shadow-sm hover:shadow-lg hover:brightness-110 transition-all inline-flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        mon espace
+                    </a>
+                @endguest
+
             </div>
 
             <button @click="toggleMobileMenu()" class="md:hidden p-2 text-foreground">

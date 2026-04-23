@@ -6,6 +6,9 @@
         $wordCount = str_word_count(strip_tags($post->content));
         $minutes = ceil($wordCount / $wordsPerMinute);
         $time = $minutes > 1 ? $minutes . ' mins' : $minutes . ' min';
+
+        $shareUrl = urlencode(request()->fullUrl());
+        $shareTitle = urlencode($post->title);
     @endphp
 
     <header class=" hero-section flex flex-col items-center justify-center pb-7">
@@ -49,27 +52,51 @@
         </div>
 
         {{-- Tags --}}
-        @if($post->blogTags->count() > 0)
-            <div
-                class="flex flex-col justify-start md:justify-between md:flex-row items-start md:items-center border-t border-border pt-8 gap-4">
-                <div class=" flex items-center gap-2">
-                    <span class="size-12 flex items-center justify-center bg-gcp-primary-color rounded-full">
-                        <i class="fa-solid fa-user text-white"></i>
-                    </span>
-                    <span class="text-muted-foreground">
-                        par <span class="font-bold">{{ $post->user->name }}</span>
-                    </span>
-                </div>
-                <div class="flex flex-wrap items-center gap-2">
-                    @foreach($post->blogTags as $tag)
-                        <span class="px-3 py-1 bg-gcp-primary-color/20 text-secondary-foreground text-xs rounded-full">
-                            #{{ $tag->name }}
-                        </span>
-                    @endforeach
-                </div>
 
+        <div
+            class="flex flex-col justify-start md:justify-between md:flex-row items-start md:items-center border-t border-border pt-8 gap-4">
+            <div class=" flex items-center gap-2">
+                <span class="size-12 flex items-center justify-center bg-gcp-primary-color rounded-full">
+                    <i class="fa-solid fa-user text-white"></i>
+                </span>
+                <span class="text-muted-foreground">
+                    par <span class="font-bold">{{ $post->user->name }}</span>
+                </span>
             </div>
-        @endif
+            <div class="flex items-center gap-4 ">
+                <span class="text-sm font-bold text-foreground/60 tracking-wider">Partager l'expertise :</span>
+
+                <div class="flex gap-2">
+                    <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank"
+                        class="p-2 rounded-full  transition-colors"
+                        title="Partager sur WhatsApp">
+                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                    </a>
+
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank"
+                        class="p-2 rounded-full transition-colors"
+                        title="Partager sur LinkedIn">
+                        <i class="fa-brands fa-linkedin text-xl"></i>
+                    </a>
+
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank"
+                        class="p-2 rounded-full transition-colors"
+                        title="Partager sur Facebook">
+                        <i class="fa-brands fa-facebook text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            @if($post->blogTags->count() > 0)
+                    <div class="flex flex-wrap items-center gap-2">
+                        @foreach($post->blogTags as $tag)
+                            <span class="px-3 py-1 bg-gcp-primary-color/20 text-secondary-foreground text-xs rounded-full">
+                                #{{ $tag->name }}
+                            </span>
+                        @endforeach
+                    </div>
+
+                </div>
+            @endif
     </div>
 
     @if ($relatedPosts->count() > 0)
