@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonalSpaceRedirectController;
@@ -25,6 +26,10 @@ Route::get('/blog', function () {
     return view('pages.blog');
 })->name('blog');
 
+
+Route::get('/formation', [CourseController::class, 'index'])->name('formation');
+
+Route::get('/formation/{slug}', [CourseController::class, 'show'])->name('formation.show');
 
 Route::get('/correct_redirect', [PersonalSpaceRedirectController::class, 'redirection'])->name('personnal_space');
 

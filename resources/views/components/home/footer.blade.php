@@ -34,7 +34,9 @@
                             'Accueil' => 'home', 
                             'Contact' => 'contact', 
                             'Réalisations' => 'project', 
+                            'Formation' => 'formation',
                             'Blog' => 'blog'
+                            
                         ] as $label => $route)
                             <a href="{{ route($route) }}" 
                                class="text-sm transition-colors {{ request()->routeIs($route) ? 'text-white font-bold' : 'text-gcp-light-gray hover:text-gcp-primary-color' }}">

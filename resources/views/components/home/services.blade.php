@@ -8,7 +8,7 @@
         ],
         [
             'id' => '02',
-            'title' => 'Gros Œuvre & Maçonnerie',
+            'title' => 'Gros Œuvre',
             'content' => 'Une exécution rigoureuse de vos structures porteuses, garantissant la solidité et la pérennité de vos édifices.',
             'image' => asset('images/services/hero2.jpeg')
         ],
@@ -42,7 +42,7 @@
 <div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-30" id="service">
     <div class="flex items-center justify-center">
         <span
-            class="text-gcp-primary-color bg-gcp-primary-color/10 text-[12px] font-bold rounded-3xl px-3 py-2 uppercase tracking-widest">
+            class="text-gcp-primary-color bg-gcp-primary-color/10 text-[13px] font-bold rounded-3xl px-3 py-2 uppercase tracking-widest">
             Expertises & Services
         </span>
     </div>

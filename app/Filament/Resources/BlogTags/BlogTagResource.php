@@ -31,9 +31,10 @@ class BlogTagResource extends Resource
     protected static ?string $pluralModelLabel = 'Tags';
     protected static ?string $modelLabel = 'Tag';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Gestion Blog';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestion des contenus';
     protected static ?string $recordTitleAttribute = 'name';
 
+    protected static ?int $navigationSort = 2;
     public static function form(Schema $schema): Schema
     {
         return $schema

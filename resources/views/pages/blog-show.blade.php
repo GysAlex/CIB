@@ -15,7 +15,7 @@
 @endsection
 
 @section('title')
-    {{ $post->title }}
+    {{ $post->title }} | Actualités & Conseils en Construction au Cameroun
 @endsection
 
 @section('header')

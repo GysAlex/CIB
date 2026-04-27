@@ -15,7 +15,7 @@ function headerAnimation() {
     if (!headerBg || !heroSection) return;
 
     gsap.to(headerBg, {
-        width: "105%",
+        width: "113%",
         height: "100%",
         top: 0,
         backgroundColor: "rgba(255, 255, 255, 0.8)",

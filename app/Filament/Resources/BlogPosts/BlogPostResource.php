@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use UnitEnum;
 
 class BlogPostResource extends Resource
@@ -30,8 +31,9 @@ class BlogPostResource extends Resource
     protected static ?string $pluralModelLabel = 'Articles';
     protected static ?string $modelLabel = 'Article';
 
-    protected static string|UnitEnum|null $navigationGroup = 'Gestion Blog';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestion des contenus';
 
+    protected static ?int $navigationSort = 1;
     public static function form(Schema $schema): Schema
     {
         return BlogPostForm::configure($schema);
@@ -45,6 +47,12 @@ class BlogPostResource extends Resource
     public static function table(Table $table): Table
     {
         return BlogPostsTable::configure($table);
+    }
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+        ->where('user_id', auth()->id());
     }
 
     public static function getRelations(): array

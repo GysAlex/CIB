@@ -48,7 +48,7 @@
     }
 }">
     <div class="flex items-center justify-center md:justify-start">
-        <span class="text-gcp-primary-color bg-gcp-primary-color/10 text-[12px] font-bold rounded-3xl px-3 py-2">
+        <span class="text-gcp-primary-color bg-gcp-primary-color/10 text-[13px] font-bold rounded-3xl px-3 py-2">
             Projet recents
         </span>
     </div>

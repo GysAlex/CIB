@@ -1,4 +1,4 @@
-<header class="fixed top-0 inset-x-0 z-50 h-20  " x-data="{ 
+<header class="fixed inset-x-0 z-50 h-20  " x-data="{ 
         mobileMenuOpen: false,
         toggleMobileMenu() {
             if (!document.startViewTransition) {
@@ -21,7 +21,7 @@
                 <a href="/" class="flex items-center space-x-2 group" aria-label="CIB Manager Home">
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('images/logo.png') }}" alt="Logo"
-                            class="h-20 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
+                            class="h-23 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
                         {{-- <div
                             class="flex flex-col text-[12px] font-extrabold leading-tight mt-1 uppercase tracking-tighter">
                             <span class="text-gcp-primary-color">Construction</span>
@@ -38,7 +38,7 @@
                 $contains = !\Illuminate\Support\Str::contains(route('blog'), $routeName)
             @endphp
             <nav class="hidden md:flex items-center gap-10 rounded-2xl">
-                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
+                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'),  'Formation' => route('formation'), 'Contact' => route('contact')] as $label => $url)
                     <a href="{{ $url }}"
                         class="hover:text-foreground px-1 py-2 text-sm font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-foreground' : 'text-muted-foreground' }}">
                         {{ $label }}
@@ -84,7 +84,7 @@
         <div class="fixed h-[calc(100dvh-64px)] top-16 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
             style="view-transition-name: mobile-menu">
             <nav class="flex flex-col space-y-8">
-                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Contact' => route('contact')] as $label => $url)
+                @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Formation' => route('formation'), 'Contact' => route('contact')] as $label => $url)
                     <a @click="toggleMobileMenu()" href="{{ $url }}"
                         class="hover:text-gcp-primary-color px-1 py-2 font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-gcp-primary-color font-bold' : 'text-muted-foreground' }}">
                         {{ $label }}

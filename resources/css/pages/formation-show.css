@@ -1,0 +1,43 @@
+
+.h-bg, .h-bg2 {
+    top: 16px;
+    min-width: 500px;
+    transform-origin: center;
+    position: absolute;
+    height: 60%;
+    background-color: rgba(249, 249, 250, 0.80);
+    left: 50%;
+    transform: translateX(-45%);
+    z-index: -1;
+}
+
+.h-bg2{
+    z-index: -2;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+@media (width <=768px) {
+    .h-bg, .h-bg2 {
+        min-width: 0%;
+    }
+
+}
+
+@keyframes pulseA {
+    from{
+        opacity: 0.01;
+    }   
+    to{
+        opacity: 0.09;
+    }
+}
+
+.backhero
+{
+    animation: pulseA infinite 10s alternate-reverse;
+}
+
+.backhero2
+{
+    animation: pulseA infinite 10s alternate-reverse;
+    animation-delay: 2s;
+}

@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             ClientSeeder::class,
             TaskTemplateSeeder::class,
             BlogSeeder::class,
-            BlogPostSeeder::class
+            BlogPostSeeder::class,
+            CourseSeeder::class
         ]);
 
         $user = User::factory()->create([

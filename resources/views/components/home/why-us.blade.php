@@ -27,7 +27,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-y-12 lg:gap-x-12">
         
         <div class="flex flex-col gap-6 col-span-2">
-            <span class="text-gcp-primary-color w-fit bg-gcp-primary-color/10 text-[12px] font-bold rounded-3xl px-4 py-2 uppercase tracking-widest">
+            <span class="text-gcp-primary-color w-fit bg-gcp-primary-color/10 text-[13px] font-bold rounded-3xl px-4 py-2 uppercase tracking-widest">
                 Nos Valeurs
             </span>
             <h2 class="text-4xl whyTitle md:text-5xl font-medium text-foreground leading-tight">

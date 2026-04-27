@@ -113,4 +113,9 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         return $this->hasMany(Project::class, 'client_id');
     }
 
+    public function courses(): HasMany
+    {
+        return $this->hasMany(Course::class);
+    }
+
 }

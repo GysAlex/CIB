@@ -29,7 +29,7 @@ class BlogCategoryResource extends Resource
     protected static ?string $navigationLabel = 'Catégories';
     protected static ?string $pluralModelLabel = 'Catégories';
     protected static ?string $modelLabel = 'Catégorie';
-    protected static string|UnitEnum|null $navigationGroup = 'Gestion Blog';
+    protected static string|UnitEnum|null $navigationGroup = 'Gestion des contenus';
     protected static ?string $recordTitleAttribute = 'name';
 
     public static function form(Schema $schema): Schema
@@ -49,6 +49,7 @@ class BlogCategoryResource extends Resource
             ]);
     }
 
+    protected static ?int $navigationSort = 3;
     public static function table(Table $table): Table
     {
         return $table
