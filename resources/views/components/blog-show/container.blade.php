@@ -59,29 +59,32 @@
                 <span class="size-12 flex items-center justify-center bg-gcp-primary-color rounded-full">
                     <i class="fa-solid fa-user text-white"></i>
                 </span>
-                <span class="text-muted-foreground">
-                    par <span class="font-bold">{{ $post->user->name }}</span>
-                </span>
+                <div class="flex flex-col gap-1">
+                    <span class="text-muted-foreground/70">
+                        par <span class="font-bold">{{ $post->user->name }}</span>
+                    </span>
+                    <span class="text-[12px]">
+                        publié le <span class="">{{ $post->published_at->diffForHumans() }}</span>
+                    </span>
+                </div>
+
             </div>
             <div class="flex items-center gap-4 ">
                 <span class="text-sm font-bold text-foreground/60 tracking-wider">Partager l'expertise :</span>
 
                 <div class="flex gap-2">
                     <a href="https://wa.me/?text={{ $shareTitle }}%20{{ $shareUrl }}" target="_blank"
-                        class="p-2 rounded-full  transition-colors"
-                        title="Partager sur WhatsApp">
+                        class="p-2 rounded-full  transition-colors" title="Partager sur WhatsApp">
                         <i class="fa-brands fa-whatsapp text-xl"></i>
                     </a>
 
                     <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}" target="_blank"
-                        class="p-2 rounded-full transition-colors"
-                        title="Partager sur LinkedIn">
+                        class="p-2 rounded-full transition-colors" title="Partager sur LinkedIn">
                         <i class="fa-brands fa-linkedin text-xl"></i>
                     </a>
 
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}" target="_blank"
-                        class="p-2 rounded-full transition-colors"
-                        title="Partager sur Facebook">
+                        class="p-2 rounded-full transition-colors" title="Partager sur Facebook">
                         <i class="fa-brands fa-facebook text-xl"></i>
                     </a>
                 </div>
@@ -99,6 +102,7 @@
             @endif
     </div>
 
+    <livewire:comment-system :model="$post"/>
     @if ($relatedPosts->count() > 0)
         <div class="bg-secondary/30 py-20">
             <div class="">

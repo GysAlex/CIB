@@ -6,6 +6,7 @@ use App\Filament\Resources\Projects\ProjectResource;
 use App\Filament\Resources\Tasks\TaskResource;
 use App\Models\Project;
 use App\Notifications\DeliverableValidatedNotification;
+use Carbon\Carbon;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkAction;
@@ -170,6 +171,7 @@ class TasksTable
 
                         $record->update([
                             'is_launched' => true,
+                            'launch_at' => Carbon::now(),
                             'status' => 'en_cours',
                         ]);
 

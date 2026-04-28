@@ -3,6 +3,8 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Pages\ProjectBilan;
+use App\Filament\Widgets\AdminOverview;
+use App\Filament\Widgets\ProjectProgressTable;
 use Filament\Actions\Action;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -50,13 +52,10 @@ class AdminPanelProvider extends PanelProvider
             // )
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
-            ->pages([
-                Dashboard::class,
-            ])
+            ->pages([])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -73,4 +72,5 @@ class AdminPanelProvider extends PanelProvider
                 Authenticate::class,
             ]);
     }
+
 }

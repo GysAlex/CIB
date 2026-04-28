@@ -118,4 +118,9 @@ class User extends Authenticatable implements FilamentUser, HasMedia
         return $this->hasMany(Course::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

@@ -24,10 +24,10 @@
         </p>
 
         <div class="w-fit mx-auto" id="main-cta">
-            <button class="py-3 px-4 cursor-pointer hero-button transition-all flex items-center gap-2 group">
+            <a href="{{ route('contact') }}" class="py-3 px-4 cursor-pointer hero-button transition-all flex items-center gap-2 group">
                 <span class="text-[14px]">Obtenir un devis</span>
                 <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-all duration-400"></i>
-            </button>
+            </a>
         </div>
     </div>
 

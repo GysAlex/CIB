@@ -11,7 +11,7 @@ function headerAnimation() {
     const headerBg = document.querySelector('.h-bg');
     const heroSection = document.querySelector('.hero-section');
 
-    const navItems = gsap.utils.toArray(document.querySelectorAll('nav a'))
+    const navItems = gsap.utils.toArray(document.querySelectorAll('header nav a'))
 
     if (!headerBg || !heroSection) return;
 

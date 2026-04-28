@@ -14,7 +14,7 @@
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
         <!-- Styles / Scripts -->
-        @if (request()->routeIs('blog') || request()->routeIs('contact') || request()->routeIs('formation') )
+        @if (request()->routeIs('blog') || request()->routeIs('contact') || request()->routeIs('formation') || request()->routeIs('formation.show') || request()->routeIs('blog.show')  )
             @vite(['resources/css/app.css'])
         @else
             @vite(['resources/css/app.css', 'resources/js/app.js'])        

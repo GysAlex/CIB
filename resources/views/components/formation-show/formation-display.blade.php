@@ -62,7 +62,7 @@
                 @if ($course->summary)
                     <p class="mb-0 italic">{{ $course->summary  }}</p>
                 @else
-                     <p class="mb-0 italic"> pas de résumé </p>
+                    <p class="mb-0 italic"> pas de résumé </p>
                 @endif
             </div>
 
@@ -71,11 +71,28 @@
 
         {{-- Footer de l'article : Stats & Partage --}}
         <div
-            class="flex flex-col justify-start md:justify-between md:flex-row items-start md:items-center border-t border-border pt-8 gap-4">
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-2 text-muted-foreground">
-                    <i class="fa-solid fa-eye"></i>
-                    <span class="font-bold">{{ number_format($course->views_count) }}</span> vues
+            class="flex flex-col justify-start md:justify-between md:flex-row items-start md:items-center border-t border-border pt-4 gap-4">
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2 text-[12px]">
+
+                    <div class="flex items-center gap-2 text-gcp-primary-color">
+                        <i class="fa-solid fa-eye"></i>
+                        <span class="font-bold">{{ number_format($course->views_count) }}</span> vues
+                    </div>
+                </div>
+                <div class=" flex items-center gap-2">
+                    <span class="size-12 flex items-center justify-center bg-gcp-primary-color rounded-full">
+                        <i class="fa-solid fa-user text-white"></i>
+                    </span>
+                    <div class="flex flex-col gap-1">
+                        <span class="text-muted-foreground/70">
+                            par <span class="font-bold">{{ $course->user->name }}</span>
+                        </span>
+                        <span class="text-[12px]">
+                            publié le <span class="">{{ $course->published_at->diffForHumans() }}</span>
+                        </span>
+                    </div>
+
                 </div>
             </div>
 
@@ -99,7 +116,8 @@
         </div>
     </div>
 
-    {{-- Vidéos suggérées --}}
+    <livewire:comment-system :model="$course"/>
+
     @if ($relatedCourses->count() > 0)
         <div class="bg-secondary/10  pb-15">
             <div class="max-w-7xl mx-auto">

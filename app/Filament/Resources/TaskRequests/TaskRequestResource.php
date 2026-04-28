@@ -57,6 +57,11 @@ class TaskRequestResource extends Resource
         ];
     }
 
+    public static function getNavigationBadgeTooltip(): ?string
+    {
+        return 'Demandes de tâche en attente de traitement';
+    }
+
     public static function getPages(): array
     {
         return [

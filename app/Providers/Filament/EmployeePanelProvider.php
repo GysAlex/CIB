@@ -54,8 +54,7 @@ class EmployeePanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Employee/Widgets'), for: 'App\Filament\Employee\Widgets')
             ->widgets([
-                AccountWidget::class,
-                FilamentInfoWidget::class,
+
             ])
             ->middleware([
                 EncryptCookies::class,
