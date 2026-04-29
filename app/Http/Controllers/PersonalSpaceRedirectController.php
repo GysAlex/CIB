@@ -10,7 +10,7 @@ class PersonalSpaceRedirectController extends Controller
     public function redirection()
     {
         if (Auth::user()->hasRole('admin') || Auth::user()->hasRole('staff')) {
-            return redirect(route('filament.admin.pages.dashboard'));
+            return redirect(route('filament.admin.pages.project-dashboard'));
         }
         else if(Auth::user()->hasRole('client')){
             return redirect(route('filament.client.pages.dashboard'));
