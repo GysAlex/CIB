@@ -30,7 +30,6 @@
                 $routeName = request()->route()->getName();
                 $path = request()->path();
 
-
             @endphp
             <nav class="hidden md:flex items-center gap-10 rounded-2xl">
                 @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Formation' => route('formation'), 'Contact' => route('contact')] as $label => $url)
@@ -63,11 +62,11 @@
             </div>
 
             <button @click="toggleMobileMenu()" class="md:hidden p-2 text-foreground">
-                <svg x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
+                <svg x-cloak x-show="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
-                <svg x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
+                <svg x-cloak x-show="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="white" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
@@ -77,12 +76,12 @@
 
     <div x-cloak :class="mobileMenuOpen ? 'md:hidden' : 'hidden' ">
 
-        <div class="fixed h-[calc(100dvh-64px)] top-16 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
+        <div class="fixed h-[calc(100dvh-80px)] top-20 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
             style="view-transition-name: mobile-menu">
-            <nav class="flex flex-col space-y-8">
+            <div class="flex flex-col space-y-8">
                 @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'),  'Formation' => route('formation'), 'Contact' => route('contact')] as $label => $url)
                     <a @click="toggleMobileMenu()" href="{{ $url }}"
-                        class="hover:text-gcp-primary-color px-1 py-2 font-medium transition-colors relative group {{ \Illuminate\Support\Str::contains($url, $routeName) ? 'text-gcp-primary-color font-bold' : 'text-muted-foreground' }}">
+                        class="hover:text-gcp-primary-color px-1 py-2 font-medium transition-colors relative group   {{ $path === "/" && $label == 'Accueil' ? 'text-gcp-primary-color' : 'text-muted-foreground' }}" >
                         {{ $label }}
                     </a>
                 @endforeach
@@ -103,7 +102,7 @@
                         </a>
                     @endguest
                 </div>
-            </nav>
+            </div>
 
 
         </div>

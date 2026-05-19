@@ -4,37 +4,37 @@
             'id' => '01',
             'title' => 'Conception & Architecture',
             'content' => 'Modélisation 3D et plans architecturaux optimisés pour allier esthétique moderne, fonctionnalité et respect des normes.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_1.jpeg')
         ],
         [
             'id' => '02',
             'title' => 'Gros Œuvre',
             'content' => 'Une exécution rigoureuse de vos structures porteuses, garantissant la solidité et la pérennité de vos édifices.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_2.jpeg')
         ],
         [
             'id' => '03',
             'title' => 'Domotique & Smart Home',
             'content' => 'Installation de systèmes intelligents pour le contrôle de l’éclairage, de la sécurité et du climat en temps réel.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_3.jpeg')
         ],
         [
             'id' => '04',
             'title' => 'Gestion de Chantier Digitale',
             'content' => 'Suivi transparent via notre plateforme : rapports d’avancement, gestion des livrables et notifications clients.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_4.jpeg')
         ],
         [
             'id' => '05',
             'title' => 'Énergies Renouvelables',
             'content' => 'Intégration de solutions photovoltaïques et gestion intelligente pour réduire votre empreinte carbone et vos factures.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_5.jpg')
         ],
         [
             'id' => '06',
             'title' => 'Finitions de Précision',
             'content' => 'Second œuvre et décoration d’intérieur : nous apportons le soin final qui transforme un bâtiment en œuvre d’exception.',
-            'image' => asset('images/services/hero2.jpeg')
+            'image' => asset('images/services/img_6.jpg')
         ],
     ];
 @endphp
@@ -72,8 +72,8 @@
                     {{ $service['content'] }}
                 </div>
                 <div class="image h-48">
-                    <img src=" {{ $service['image'] }} " alt="{{ $service['title'] }}"
-                        class="group-hover:scale-102 transition-transform duration-500 rounded-xl">
+                    <img src=" {{ $service['image'] }} " loading="lazy"  alt="{{ $service['title'] }}"
+                        class="group-hover:scale-102 transition-transform duration-500 rounded-xl w-full h-full object-cover">
                 </div>
             </div>
         @endforeach

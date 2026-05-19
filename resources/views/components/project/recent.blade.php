@@ -1,31 +1,31 @@
 @php
     $recentProjects = [
         [
-            'title' => 'Villa Oasis Intelligente',
-            'client' => 'Famille Etoundi',
-            'location' => 'Yaoundé, Bastos',
+            'title' => 'Résidence Privée Cité Chirac',
+            'client' => 'Client Privé',
+            'location' => 'Douala, Yassa Cité Chirac',
             'date' => 'Mars 2026',
             'category' => 'Construction Résidentielle',
-            'image' => asset('images/services/hero2.jpeg'),
-            'description' => 'Une résidence de luxe intégrant une gestion intelligente de l’énergie solaire et une ventilation naturelle optimisée pour le climat équatorial. Alliant confort moderne et architecture durable.'
+            'image' => asset('images/project/projet2.jpeg'),
+            'description' => 'Étude architecturale, d’ingénierie et réalisation complète du Gros œuvre et de la Voirie et Réseau Divers (VRD) pour une villa moderne de type R+1 s’étendant sur une superficie de 130 m².'
         ],
         [
-            'title' => 'Complexe Blue Tower',
-            'client' => 'SCI Horizon',
-            'location' => 'Douala, Bonanjo',
+            'title' => 'Complexe Mixte Yassa',
+            'client' => 'Institutionnel religieux / Commercial',
+            'location' => 'Douala, Yassa',
             'date' => 'Janvier 2026',
-            'category' => 'Immobilier Professionnel',
-            'image' => asset('images/services/hero2.jpeg'),
-            'description' => 'Siège social innovant au cœur du quartier des affaires. Structure à haute performance thermique avec système de gestion technique du bâtiment (GTB) centralisé.'
+            'category' => 'Établissement Mixte',
+            'image' => asset('images/project/projet1.jpeg'),
+            'description' => 'Étude architecturale, d’ingénierie et mission complète de contrôle pour un complexe d’envergure de type SS+R+MEZ+8 de 490 m², combinant un espace de culte et une habitation commerciale.'
         ],
         [
-            'title' => 'Eco-Logements Kribi',
-            'client' => 'Promoteurs Littoral',
-            'location' => 'Kribi, Zone Balnéaire',
+            'title' => 'Siège Administratif PAK',
+            'client' => 'Port Autonome de Kribi',
+            'location' => 'Kribi, Zone Portuaire',
             'date' => 'Décembre 2025',
-            'category' => 'Aménagement Touristique',
-            'image' => asset('images/services/hero2.jpeg'),
-            'description' => 'Ensemble de bungalows écologiques utilisant des matériaux locaux stabilisés et une domotique de pointe pour la sécurité et la gestion à distance.'
+            'category' => 'Bâtiment Administratif',
+            'image' => asset('images/project/projet3.jpg'),
+            'description' => 'Étude d’ingénierie approfondie et élaboration rigoureuse du Dossier d’Appel d’Offres (DAO) pour la future Direction Générale en R+5 sur une surface plancher de 1 167 m².'
         ],
     ];
 @endphp
@@ -103,14 +103,12 @@
                 <button @click="prev()"
                     class="hover:bg-gcp-primary-color hover:text-white py-3 px-4 border border-gcp-primary-color/70 disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed text-gcp-primary-color cursor-pointer bg-white/90 disabled:text-gray-300 transition-all flex items-center gap-2 group "
                     :disabled="currentIndex == 0">
-                    <i
-                        class="fa-solid fa-arrow-left duration-400"></i>
+                    <i class="fa-solid fa-arrow-left duration-400"></i>
                 </button>
                 <button @click="next()"
                     class="hover:bg-gcp-primary-color hover:text-white py-3 px-4 border border-gcp-primary-color/70 disabled:bg-gray-200 disabled:border-0 disabled:cursor-not-allowed text-gcp-primary-color cursor-pointer bg-white/90 disabled:text-gray-300 transition-all flex items-center gap-2 group "
                     :disabled="currentIndex == 2">
-                    <i
-                        class="fa-solid fa-arrow-right duration-400"></i>
+                    <i class="fa-solid fa-arrow-right duration-400"></i>
                 </button>
 
             </div>

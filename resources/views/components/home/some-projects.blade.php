@@ -5,36 +5,37 @@
                 Quelques réalisations
             </div>
             <div class="text-muted max-w-2xl">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga eius voluptatum elit. Fuga eius
-                voluptatum luptatum eli
+                Un aperçu de notre savoir-faire en ingénierie et maîtrise d'œuvre. Des fondations spéciales aux
+                architectures modernes, nous bâtissons avec précision pour garantir la pérennité de vos investissements
+                immobiliers
             </div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8" x-data="{ 
             currentIndex: 0,
             projects: [
                 {
-                    title: 'Résidence Nitcheu',
-                    category: 'Résidence Personnelle',
+                    title: 'Projet de construction d’un R+1',
+                    category: 'Habitation résidentielle',
                     year: '2024',
-                    client: 'M. Bilong',
-                    image: '{{ asset('images/hero4.jpg') }}',
-                    desc: 'Conception d’une villa moderne alliant domotique avancée et architecture bioclimatique pour un confort optimal.'
+                    client: 'Privé (Yassa cité Chirac)',
+                    image: '{{ asset('images/home_projects/projet2.jpeg') }}',
+                    desc: 'Étude architecturale, d’ingénierie et réalisation complète du Gros œuvre et de la Voirie et Réseau Divers (VRD) sur une surface de 130 m² / 300 m² à Douala.'
                 },
                 {
-                    title: 'Immeuble Horizon',
-                    category: 'Promotion Immobilière',
+                    title: 'Immeuble SS+R+MEZ+8',
+                    category: 'Établissement Mixte (Église & Commerce)',
                     year: '2025',
-                    client: 'SCI Horizon',
-                    image: '{{ asset('images/hero3.jpg') }}',
-                    desc: 'Un complexe résidentiel intelligent au cœur de Douala, optimisé pour l’efficacité énergétique.'
+                    client: 'Institutionnel (Yassa - Douala)',
+                    image: '{{ asset('images/home_projects/projet1.jpeg') }}',
+                    desc: 'Étude architecturale, d’ingénierie et Mission complète de contrôle pour un complexe d’envergure de 490 m² / 550 m² incluant sous-sol, mezzanine et 8 étages.'
                 },
                 {
-                    title: 'Villa Emeraude',
-                    category: 'Haut Standing',
-                    year: '2024',
-                    client: 'Mme. Ewane',
-                    image: '{{ asset('images/hero2.jpeg') }}',
-                    desc: 'Intégration de solutions de gestion d’énergie solaire et système de sécurité centralisé.'
+                    title: 'Direction Générale PAK (R+5)',
+                    category: 'Bâtiment Administratif / Tertiaire',
+                    year: '2026',
+                    client: 'Port Autonome de Kribi',
+                    image: '{{ asset('images/home_projects/projet3.jpg') }}',
+                    desc: 'Étude approfondie d’ingénierie et élaboration du Dossier d’Appel d’Offres (DAO) pour une infrastructure moderne de 1 167 m² à Kribi.'
                 }
             ]
         }">

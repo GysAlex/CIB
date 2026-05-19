@@ -13,6 +13,8 @@ function headerAnimation() {
 
     const navItems = gsap.utils.toArray(document.querySelectorAll('header nav a'))
 
+    const navbarSVG = gsap.utils.toArray(document.querySelectorAll('header button svg'))
+
     if (!headerBg || !heroSection) return;
 
     gsap.to(headerBg, {
@@ -44,6 +46,17 @@ function headerAnimation() {
             // markers: true,     
         }
     });
+
+    gsap.to(navbarSVG, {
+        stroke: "#717182",
+        scrollTrigger: {
+            trigger: heroSection,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+            // markers: true,     
+        }
+    })
 
 
 }
