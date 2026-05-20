@@ -33,9 +33,14 @@
             'image' => asset('images/team/team6.jpeg'),
         ],
         [
-            'name' => 'Ing. Ngoh Mac Peace',
+            'name' => 'Ing. SOH Kylian Arnold',
             'role' => 'Ingénieur structure',
             'image' => asset('images/team/team7.jpeg'),
+        ],
+        [
+            'name' => 'Ing. NGOH Mac Peace',
+            'role' => 'Ingénieur structure',
+            'image' => asset('images/team/team8.jpeg'),
         ],
     ];
 @endphp
