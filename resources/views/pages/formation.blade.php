@@ -19,7 +19,7 @@
 @endsection
 
 @section('title')
-    Formations Vidéo & Expertise BTP
+    Formations Vidéo & Expertise BTP | 
 @endsection
 
 @section('header')

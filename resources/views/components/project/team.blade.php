@@ -1,34 +1,41 @@
 @php
     $team = [
         [
-            'name' => 'Kamba Joel',
-            'role' => 'Ingénieur Civil Principal',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'AZINWIE Zama Ambe',
+            'role' => 'CEO',
+            'image' => asset('images/team/team1.jpg'),
         ],
         [
-            'name' => 'Fouda Marie',
-            'role' => 'Architecte D.P.L.G',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'Honoré MAYOMBOT',
+            'role' => 'Integrateur de solutions
+                CFA/CFO & Formateur',
+            'image' => asset('images/team/team2.jpeg'),
         ],
         [
-            'name' => 'Talla Samuel',
-            'role' => 'Conducteur de Travaux',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'FREDERICK NDAM MBAH',
+            'role' => 'Ing. Senior Genie Civil 
+            Spécialiste structure',
+            'image' => asset('images/team/team3.jpeg'),
         ],
         [
-            'name' => 'Ewane Christian',
-            'role' => 'Expert Structure & BIM',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'WANDJI PATRICK',
+            'role' => 'PROJECTEUR BIM',
+            'image' => asset('images/team/team4.jpeg'),
         ],
         [
-            'name' => 'Ngono Alice',
-            'role' => 'Chargée d\'Études Fluides',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'Ing. IKENG Pascal',
+            'role' => 'Genie Civil BIM Manager CiB',
+            'image' => asset('images/team/team5.jpeg'),
         ],
         [
-            'name' => 'Mekongo Jean',
-            'role' => 'Chef de Chantier Senior',
-            'image' => asset('images/team/team.jpg'),
+            'name' => 'NGAPOUT Noudine',
+            'role' => 'IT Manager',
+            'image' => asset('images/team/team6.jpeg'),
+        ],
+        [
+            'name' => 'Ing. Ngoh Mac Peace',
+            'role' => 'Ingénieur structure',
+            'image' => asset('images/team/team7.jpeg'),
         ],
     ];
 @endphp
@@ -45,17 +52,18 @@
             L'excellence technique portée par des <span class="text-gcp-primary-color">experts</span>
         </h2>
         <p class="text-muted-foreground text-start max-w-md">
-            Des fondations à la finition, nos spécialistes unissent leurs forces pour garantir la pérennité et la précision de chaque structure que nous bâtissons.
+            Des fondations à la finition, nos spécialistes unissent leurs forces pour garantir la pérennité et la
+            précision de chaque structure que nous bâtissons.
         </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:grid-cols-3 mt-12">
         @foreach($team as $member)
-            <div class="card border border-border flex flex-col group overflow-hidden bg-white hover:shadow-md transition-shadow">
-                <div class="overflow-hidden min-h-100">
-                    <img class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-101" 
-                         src="{{ $member['image'] }}" 
-                         alt="{{ $member['name'] }}">
+            <div
+                class="card border border-border flex flex-col group overflow-hidden bg-white hover:shadow-md transition-shadow">
+                <div class="overflow-hidden max-h-100">
+                    <img class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-101"
+                        src="{{ $member['image'] }}" alt="{{ $member['name'] }}">
                 </div>
                 <div class="px-3 py-3 flex items-center justify-start gap-3 border border-border">
                     <span class="text-foreground font-bold tracking-tight">
