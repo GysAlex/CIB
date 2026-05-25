@@ -81,7 +81,7 @@
 
     <div x-cloak  :class="mobileMenuOpen ? 'md:hidden' : 'hidden' ">
 
-        <div class="fixed h-[calc(100dvh-64px)] top-16 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
+        <div class="fixed h-[calc(100dvh-80px)] top-20 right-0 w-[85%] max-w-sm bg-background border-l border-border z-65 shadow-2xl flex justify-start flex-col p-3 pt-24"
             style="view-transition-name: mobile-menu">
             <nav class="flex flex-col space-y-8">
                 @foreach(['Accueil' => route('home'), 'Projets' => route('project'), 'Blog' => route('blog'), 'Formation' => route('formation'), 'Contact' => route('contact')] as $label => $url)
