@@ -11,23 +11,6 @@ jobs:
             - uses: actions/checkout@v4
 
             # compilation des assets sur github pour ne pas sucharger le serveur
-            - name: Install NPM & Build Assets
-              run: |
-                npm ci
-                npm run build
-            # envoi des fichiers vers hostinger
-
-            - name: Upload Build Folder
-              uses: appleboy/scp-action@v0.1.7
-              with:
-                host: ${{ secrets.SSH_HOST }}
-                username: ${{ secrets.SSH_USERNAME }}
-                key: ${{ secrets.SSH_PRIVATE_KEY }}
-                port: ${{ secrets.SSH_PORT }} 
-                source: "public/build"
-                target: ${{ secrets.APP_PATH }}
-
-
             - name: Executes remote ssh commands
               uses: appleboy/ssh-action@v1.1.0
               with: 
@@ -56,3 +39,21 @@ jobs:
                     # Demarrage de la queue
 
                     php artisan queue:restart
+                    
+            - name: Install NPM & Build Assets
+              run: |
+                npm ci
+                npm run build
+            # envoi des fichiers vers hostinger
+
+            - name: Upload Build Folder
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USERNAME }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                port: ${{ secrets.SSH_PORT }} 
+                source: "public/build"
+                target: ${{ secrets.APP_PATH }}
+
+
