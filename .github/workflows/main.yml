@@ -42,5 +42,4 @@ jobs:
 
 
                     # Demarrage de la queue
-
                     php artisan queue:restart
