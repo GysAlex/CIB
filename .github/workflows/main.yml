@@ -30,6 +30,9 @@ jobs:
                     npm ci --no-audit --no-fund # --no-audit accélère le processus
                     npm run build
 
+                    # Nettoyage optionnel pour libérer de la place et de la RAM
+                    rm -rf node_modules
+
                     # Mise à jour de la base de données
                     php artisan migrate --force #--force pour éviter les intéractions
                     

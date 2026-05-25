@@ -17,6 +17,8 @@ export default defineConfig({
                     'resources/css/pages/contact.css',
                     'resources/js/pages/blog.js',
                     'resources/css/pages/blog.css',
+                    'resources/css/pages/formation.css',
+                    'resources/js/pages/formation.js',
                     'resources/css/filament/employee/theme.css'
                 ],
             refresh: true,
