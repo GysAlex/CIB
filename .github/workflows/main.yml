@@ -11,9 +11,15 @@ jobs:
             - uses: actions/checkout@v4
 
             - name: Download composer dependencies
-              run : |
-                # Installation des dépendances
-                composer install --no-dev --optimize-autoloader
+              uses: appleboy/ssh-action@v1.1.0
+              with: 
+                host: ${{ secrets.SSH_HOST }}
+                username: ${{ secrets.SSH_USERNAME }}
+                key: ${{ secrets.SSH_PRIVATE_KEY }}
+                port: ${{ secrets.SSH_PORT }}
+                script: |
+                    # Installation des dépendances
+                    composer install --no-dev --optimize-autoloader                  
 
             # compilation des assets sur github pour ne pas sucharger le serveur
             - name: Install NPM & Build Assets
