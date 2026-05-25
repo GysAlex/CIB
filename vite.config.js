@@ -17,6 +17,12 @@ export default defineConfig({
                     'resources/css/pages/contact.css',
                     'resources/js/pages/blog.js',
                     'resources/css/pages/blog.css',
+                    'resources/css/pages/blog-show.css',
+                    'resources/js/pages/blog-show.js',
+
+                    'resources/css/pages/formation-show.css',
+                    'resources/js/pages/formation-show.js',
+
                     'resources/css/pages/formation.css',
                     'resources/js/pages/formation.js',
                     'resources/css/filament/employee/theme.css'
