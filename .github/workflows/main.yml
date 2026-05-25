@@ -9,18 +9,6 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            
-            - name: Download composer dependencies
-              uses: appleboy/ssh-action@v1.1.0
-              with: 
-                host: ${{ secrets.SSH_HOST }}
-                username: ${{ secrets.SSH_USERNAME }}
-                key: ${{ secrets.SSH_PRIVATE_KEY }}
-                port: ${{ secrets.SSH_PORT }}
-                script: |
-                    # Installation des dépendances
-                    composer install --no-dev --optimize-autoloader        
-
             - name: Executes remote ssh commands
               uses: appleboy/ssh-action@v1.1.0
               with: 
@@ -37,6 +25,10 @@ jobs:
 
                     # Installation des dépendances
                     composer install --no-dev --optimize-autoloader
+
+                    # Actions Node directement sur le serveur
+                    npm ci --no-audit --no-fund # --no-audit accélère le processus
+                    npm run build
 
                     # Mise à jour de la base de données
                     php artisan migrate --force #--force pour éviter les intéractions
