@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminUserSeeder extends Seeder
 {
@@ -16,8 +17,8 @@ class AdminUserSeeder extends Seeder
     {
         $adminUser = User::create([
             'name' => 'Administateur',
-            'email' => 'leseulguide@cib-constuction.com',
-            'password' => bcrypt('cib-manager')
+            'email' => 'leseulguide@cib-construction.com',
+            'password' => Hash::make('password-cib')
         ]);
 
         $role = Role::where('name', 'admin')->get();
