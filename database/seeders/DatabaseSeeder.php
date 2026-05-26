@@ -17,24 +17,25 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             RoleSeeder::class,
-            EmployeeSeeder::class,
-            ClientSeeder::class,
+            AdminUserSeeder::class,
+            // EmployeeSeeder::class,
+            // ClientSeeder::class,
             TaskTemplateSeeder::class,
-            BlogSeeder::class,
-            BlogPostSeeder::class,
-            CourseSeeder::class
+            // BlogSeeder::class,
+            // BlogPostSeeder::class,
+            // CourseSeeder::class
         ]);
 
-        $user = User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@email.com',
-            'password' => bcrypt('password'),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-        ]);
+        // $user = User::factory()->create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@email.com',
+        //     'password' => bcrypt('password'),
+        //     'email_verified_at' => now(),
+        //     'remember_token' => Str::random(10),
+        // ]);
 
 
-        $adminRole = Role::where('name', 'admin')->first();
-        $user->roles()->attach($adminRole);
+        // $adminRole = Role::where('name', 'admin')->first();
+        // $user->roles()->attach($adminRole);
     }
 }
