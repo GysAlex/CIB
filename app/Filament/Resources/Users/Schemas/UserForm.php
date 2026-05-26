@@ -26,7 +26,7 @@ class UserForm
                 Select::make('roles')
                 ->label('Poste')
                 ->relationship('roles', 'display_name')
-                ->multiple()          // si un user peut avoir plusieurs rôles
+                ->multiple()// si un user peut avoir plusieurs rôles
                 ->preload()
                 ->searchable()
                 ->required(),
