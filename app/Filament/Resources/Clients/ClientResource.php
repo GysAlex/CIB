@@ -45,7 +45,7 @@ class ClientResource extends Resource
                 ->tel(),
             TextInput::make('password')
                 ->password()
-                ->dehydrated(fn ($state) => filled($state))
+                ->dehydrateStateUsing(fn ($state) => bcrypt($state))
                 ->required(fn (string $context): bool => $context === 'create'),
         ]);
     }

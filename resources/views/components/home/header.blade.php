@@ -21,7 +21,7 @@
                 <a href="/" class="flex items-center space-x-2 group" aria-label="CIB Manager Home">
                     <div class="flex items-center gap-2">
                         <img src="{{ asset('images/logo.png') }}" alt="Logo"
-                            class="h-23 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
+                            class="h-18 md:h-20 lg:h-23 w-auto transition-transform duration-300 rounded-xl group-hover:scale-105" />
                     </div>
                 </a>
             </div>
