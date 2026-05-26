@@ -25,7 +25,10 @@ export default defineConfig({
 
                     'resources/css/pages/formation.css',
                     'resources/js/pages/formation.js',
-                    'resources/css/filament/employee/theme.css'
+                    
+                    'resources/css/filament/employee/theme.css',
+                    'resources/css/filament/admin/theme.css',
+                    'resources/css/filament/client/theme.css'
                 ],
             refresh: true,
         }),
