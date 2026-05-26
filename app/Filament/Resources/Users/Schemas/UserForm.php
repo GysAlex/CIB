@@ -14,13 +14,15 @@ class UserForm
         return $schema
             ->components([
                 TextInput::make('name')->label('Nom & Prénom')->required(),
+                
                 TextInput::make('email')->label('Email')->required(),
+                
                 TextInput::make('password')->label('Mot de passe')
                 ->password()
                 ->revealable()
                 ->required(fn (string $context): bool => $context === 'create')
-                ->dehydrated(fn(?string $context): string => filled($context))
-                ->dehydrateStateUsing(fn (string $context): string => bcrypt($context) ),
+                ->dehydrateStateUsing(fn (string $state): string => bcrypt($state) ),
+                
                 Select::make('roles')
                 ->label('Poste')
                 ->relationship('roles', 'display_name')
