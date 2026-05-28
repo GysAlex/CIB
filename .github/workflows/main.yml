@@ -36,7 +36,13 @@ jobs:
                     # Mise à jour de la base de données
                     php artisan migrate --force #--force pour éviter les intéractions
                     
-                    # Netoyage et mise en cache
+                    # Netoyage
+                    php artisan cache:clear
+                    php artisan view:clear
+                    php artisan route:clear
+                    php artisan config:clear
+
+                    # Mise en cache
                     php artisan optimize
                     php artisan filament:optimize
 

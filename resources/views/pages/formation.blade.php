@@ -9,13 +9,13 @@
     <meta property="og:description" content="Montez en compétence avec nos tutoriels vidéo. Tout savoir sur la construction durable et sécurisée au Cameroun.">
     <meta property="og:url" content="{{ request()->fullUrl() }}">
     {{-- On utilise généralement une image de couverture qui représente l'équipe ou un chantier emblématique --}}
-    <meta property="og:image" content="{{ asset('images/og-formations.jpg') }}">
+    <meta property="og:image" content="{{ asset('images/formation.jpeg') }}">
 
     {{-- Twitter --}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Académie CIB Construction | Formations BTP">
     <meta name="twitter:description" content="Apprenez à construire demain avec les experts de CIB Construction au Cameroun.">
-    <meta name="twitter:image" content="{{ asset('images/og-formations.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('images/formation.jpeg') }}">
 @endsection
 
 @section('title')

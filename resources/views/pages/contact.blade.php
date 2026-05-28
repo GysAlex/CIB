@@ -12,7 +12,7 @@
         content="Discutons de votre projet immobilier. Nos bureaux à Douala vous accueillent pour donner vie à vos ambitions architecturales.">
     <meta property="og:url" content="{{ request()->fullUrl() }}">
     {{-- Une image de vos bureaux ou d'un plan architectural avec un stylo (symbole de consultation) --}}
-    <meta property="og:image" content="{{ asset('images/og-contact.jpg') }}">
+    <meta property="og:image" content="{{ asset('images/contact.jpeg') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="summary">

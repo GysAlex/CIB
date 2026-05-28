@@ -10,11 +10,11 @@
     <meta property="og:url" content="{{ request()->fullUrl() }}">
 
 
-    <meta property="og:image" content="{{ asset('images/og-projects-grid.jpg') }}">
+    <meta property="og:image" content="{{ asset('images/projet.jpeg') }}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Nos projets de construction - CIB Construction">
-    <meta name="twitter:image" content="{{ asset('images/og-projects-grid.jpg') }}">
+    <meta name="twitter:image" content="{{ asset('images/projet.jpeg') }}">
     
     <link rel="canonical" href="{{ url()->current() }}">
 @endsection
