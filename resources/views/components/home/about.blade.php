@@ -1,7 +1,7 @@
 @php
     $stats = [
         ['value' => '08', 'label' => 'Années d’expertise', 'suffix' => '+'],
-        ['value' => '45', 'label' => 'Projets livrés', 'suffix' => '+'],
+        ['value' => '100', 'label' => 'Projets livrés', 'suffix' => '+'],
         ['value' => '99', 'label' => 'Taux de satisfaction', 'suffix' => '%'],
         ['value' => '4.9', 'label' => 'Note moyenne clients', 'suffix' => '/5'],
     ];

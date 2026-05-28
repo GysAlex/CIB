@@ -33,7 +33,7 @@
             'image' => asset('images/team/team6.jpeg'),
         ],
         [
-            'name' => 'Ing. SOH Kylian Arnold',
+            'name' => 'Ing. SOH Kylian',
             'role' => 'Ingénieur structure',
             'image' => asset('images/team/team7.jpeg'),
         ],

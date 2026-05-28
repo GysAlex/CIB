@@ -45,7 +45,7 @@
 
         <div class="col-span-3 flex flex-col gap-12">
             <p class="text-2xl text-muted-foreground font-medium leading-relaxed">
-                Nous ne construisons pas seulement des murs, nous bâtissons des infrastructures intelligentes adaptées aux défis de demain au Cameroun.
+                Nous ne construisons pas seulement des murs, nous bâtissons des infrastructures intelligentes adaptées aux défis de demain au Cameroun et dans toute l'Afrique.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
