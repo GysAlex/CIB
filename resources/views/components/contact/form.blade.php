@@ -11,9 +11,10 @@
                     Travaillons ensemble
                 </h1>
                 <p class="text-muted/80">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo veniam mollitia architecto pariatur
-                    facilis voluptatum quam est, ullam dolorum vero natus minus facere. Exercitationem deleniti nisi
-                    veritatis est eaque porro.
+                    Vous avez une idée précise, un besoin de transformation numérique ou un projet de développement à
+                    concrétiser ?
+                    Remplissez le formulaire ou contactez-moi directement pour analyser vos besoins et concevoir
+                    ensemble une solution performante, sur mesure et adaptée à vos objectifs.
                 </p>
                 <div class="mt-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
