@@ -23,9 +23,9 @@
                 },
                 {
                     title: 'Immeuble SS+R+MEZ+8',
-                    category: 'Établissement Mixte (Église & Commerce)',
+                    category: 'Établissement Mixte (Banque & Commerce)',
                     year: '2025',
-                    client: 'Institutionnel (Yassa - Douala)',
+                    client: 'Institutionnel (Akwa - Douala)',
                     image: '{{ asset('images/home_projects/projet1.jpeg') }}',
                     desc: 'Étude architecturale, d’ingénierie et Mission complète de contrôle pour un complexe d’envergure de 490 m² / 550 m² incluant sous-sol, mezzanine et 8 étages.'
                 },
@@ -34,14 +34,14 @@
                     category: 'Bâtiment Administratif / Tertiaire',
                     year: '2026',
                     client: 'Port Autonome de Kribi',
-                    image: '{{ asset('images/home_projects/projet3.jpg') }}',
+                    image: '{{ asset('images/home_projects/projet_3.png') }}',
                     desc: 'Étude approfondie d’ingénierie et élaboration du Dossier d’Appel d’Offres (DAO) pour une infrastructure moderne de 1 167 m² à Kribi.'
                 }
             ]
         }">
             <div class="md:col-span-2 h-120 relative overflow-hidden ">
                 <template x-for="(project, index) in projects">
-                    <img :src="project.image" :alt="project.title"
+                    <img loading="lazy" :src="project.image" :alt="project.title"
                         class="h-full w-full object-cover absolute inset-0 z-10 transition-all duration-700 ease-in-out"
                         :class="currentIndex === index ? 'opacity-100 scale-105' : 'opacity-0 scale-100'">
                 </template>

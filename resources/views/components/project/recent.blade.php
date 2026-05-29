@@ -6,7 +6,7 @@
             'location' => 'Douala, Yassa Cité Chirac',
             'date' => 'Mars 2026',
             'category' => 'Construction Résidentielle',
-            'image' => asset('images/project/projet2.jpeg'),
+            'image' => asset('images/project/chirac.png'),
             'description' => 'Étude architecturale, d’ingénierie et réalisation complète du Gros œuvre et de la Voirie et Réseau Divers (VRD) pour une villa moderne de type R+1 s’étendant sur une superficie de 130 m².'
         ],
         [
@@ -31,7 +31,7 @@
 @endphp
 
 <div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20" x-data="{ 
-    currentIndex: 0, 
+    currentIndex: 1, 
     projects: {{ json_encode($recentProjects) }},
     next (){
         if(this.currentIndex < this.projects.length -1)

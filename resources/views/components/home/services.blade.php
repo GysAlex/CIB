@@ -72,7 +72,7 @@
                     {{ $service['content'] }}
                 </div>
                 <div class="image h-48">
-                    <img src=" {{ $service['image'] }} " loading="lazy"  alt="{{ $service['title'] }}"
+                    <img src=" {{ $service['image'] }} " loading="lazy" alt="{{ $service['title'] }}"
                         class="group-hover:scale-102 transition-transform duration-500 rounded-xl w-full h-full object-cover">
                 </div>
             </div>
