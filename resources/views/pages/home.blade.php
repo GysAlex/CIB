@@ -16,7 +16,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CIB Construction - L'innovation au service du bâtiment">
-    <meta name="twitter:description" content="Expertise BTP, Maçonnerie, Second œuvre et Design au Cameroun.">
+    <meta name="twitter:description" content="Expertise BTP, Maçonnerie, Second œuvre et Design au Cameroun et en Afrique.">
     <meta name="twitter:image" content="{{ asset('images/hero4.jpg') }}">
 
     {{-- JSON-LD : Données structurées pour Google (Local Business) --}}

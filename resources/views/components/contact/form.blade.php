@@ -11,10 +11,10 @@
                     Travaillons ensemble
                 </h1>
                 <p class="text-muted/80">
-                    Vous avez une idée précise, un besoin de transformation numérique ou un projet de développement à
-                    concrétiser ?
-                    Remplissez le formulaire ou contactez-moi directement pour analyser vos besoins et concevoir
-                    ensemble une solution performante, sur mesure et adaptée à vos objectifs.
+                    Vous avez un projet immobilier ? Qu'il s'agisse d'une conception 3D, de travaux de gros
+                    œuvre, d'une rénovation ou d'une construction intelligente, notre expertise technique est à votre
+                    service. Contactez-nous dès aujourd'hui pour bâtir ensemble des ouvrages durables, innovants et
+                    d'une excellence architecturale absolue.
                 </p>
                 <div class="mt-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
