@@ -29,10 +29,10 @@
           "image": "{{ asset('images/logo.png') }}",
           "@id": "{{ url('/') }}",
           "url": "{{ url('/') }}",
-          "telephone": "+237XXXXXXXXX",
+          "telephone": "+23773853633",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Votre Adresse",
+            "streetAddress": "Bonamoussadi Douala",
             "addressLocality": "Douala",
             "addressCountry": "CM"
           },

@@ -36,9 +36,18 @@
                             <span class="text-lg text-muted-foreground">
                                 Appelez Nous
                             </span>
-                            <span class="text-muted">
-                                (+237) 675 65 35 63
-                            </span>
+                            <div class="flex gap-2 items-start flex-wrap">
+                                <span class="text-muted">
+                                    (+237) 738 536 33
+                                </span>
+                                <span class="text-muted">
+                                    (+237) 699 946 131
+                                </span>
+                                <span class="text-muted">
+                                    (+49) 176 813 940 50
+                                </span>
+                            </div>
+
                         </div>
 
                     </div>
@@ -47,7 +56,8 @@
 
                         </div>
 
-                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-x-8 gap-y-2">
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-center justify-between gap-x-8 gap-y-2">
                             <span class="text-muted-foreground grow w-[50%]">
                                 Localisation
                             </span>
@@ -62,7 +72,8 @@
 
                         </div>
 
-                        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-x-8 gap-y-2">
+                        <div
+                            class="flex flex-col md:flex-row items-start md:items-center justify-between gap-x-8 gap-y-2">
                             <span class="text-muted-foreground grow w-[50%]">
                                 Heures de Travaille
                             </span>
