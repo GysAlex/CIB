@@ -16,7 +16,7 @@
             'date' => 'Janvier 2026',
             'category' => 'Établissement Mixte',
             'image' => asset('images/project/projet1.jpeg'),
-            'description' => 'Étude architecturale, d’ingénierie et mission complète de contrôle pour un complexe d’envergure de type SS+R+MEZ+8 de 490 m², combinant un espace de culte et une habitation commerciale.'
+            'description' => 'Étude architecturale, d’ingénierie et mission complète de contrôle pour un complexe d’envergure de type SS+R+MEZ+8 de 490 m², contenant principalement une habitation commerciale.'
         ],
         [
             'title' => 'Siège Administratif PAK',
