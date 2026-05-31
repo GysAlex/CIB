@@ -22,7 +22,7 @@
             'title' => 'Siège Administratif PAK',
             'client' => 'Port Autonome de Kribi',
             'location' => 'Kribi, Zone Portuaire',
-            'date' => 'Décembre 2025',
+            'date' => 'Décembre 2025', 
             'category' => 'Bâtiment Administratif',
             'image' => asset('images/project/projet3.jpg'),
             'description' => 'Étude d’ingénierie approfondie et élaboration rigoureuse du Dossier d’Appel d’Offres (DAO) pour la future Direction Générale en R+5 sur une surface plancher de 1 167 m².'
