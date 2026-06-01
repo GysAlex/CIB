@@ -36,7 +36,7 @@ class ContactForm extends Component
         $validatedData = $this->validate();
 
         try {
-            Mail::to('votre-email@domaine.com')->send(new ContactRequestMail($validatedData));
+            Mail::to('leseulguide@cib-construction.com')->send(new ContactRequestMail($validatedData));
 
             session()->flash('message', 'Votre demande a été envoyée avec succès ! Notre équipe vous recontactera sous 24h.');
             $this->reset();
