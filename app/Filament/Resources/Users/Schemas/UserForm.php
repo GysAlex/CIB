@@ -21,7 +21,7 @@ class UserForm
                 ->password()
                 ->revealable()
                 ->required(fn (string $context): bool => $context === 'create')
-                ->dehydrateStateUsing(fn (string $state): string => bcrypt($state) ),
+                ->dehydrateStateUsing(fn (?string $state): string => bcrypt($state) ),
                 
                 Select::make('roles')
                 ->label('Poste')
