@@ -15,7 +15,11 @@ class UserForm
             ->components([
                 TextInput::make('name')->label('Nom & Prénom')->required(),
                 
-                TextInput::make('email')->label('Email')->required(),
+                TextInput::make('email')
+                ->label('Email')
+                ->required()
+                ->unique(table: 'users', column: 'email', ignoreRecord: true)
+                ,
                 
                 TextInput::make('password')->label('Mot de passe')
                 ->password()
