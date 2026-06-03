@@ -6,31 +6,29 @@
             'image' => asset('images/team/team1.jpg'),
         ],
         [
-            'name' => 'Honoré MAYOMBOT',
-            'role' => 'Integrateur de solutions
-                    CFA/CFO & Formateur',
-            'image' => asset('images/team/team2.jpeg'),
+            'name' => 'Ing. IKENG Pascal',
+            'role' => 'Genie Civil BIM Manager CiB',
+            'image' => asset('images/team/team5.jpeg'),
         ],
-        [
-            'name' => 'FREDERICK NDAM MBAH',
-            'role' => 'Ing. Senior Genie Civil 
-                Spécialiste structure',
-            'image' => asset('images/team/team3.jpeg'),
-        ],
+
         [
             'name' => 'WANDJI PATRICK',
             'role' => 'PROJECTEUR BIM',
             'image' => asset('images/team/team4.jpeg'),
         ],
+
+
         [
-            'name' => 'Ing. IKENG Pascal',
-            'role' => 'Genie Civil BIM Manager CiB',
-            'image' => asset('images/team/team5.jpeg'),
+            'name' => 'FREDERICK NDAM MBAH',
+            'role' => 'Ing. Senior Genie Civil 
+                                Spécialiste structure',
+            'image' => asset('images/team/team3.jpeg'),
         ],
         [
-            'name' => 'NGAPOUT Noudine',
-            'role' => 'IT Manager',
-            'image' => asset('images/team/team6.jpeg'),
+            'name' => 'Honoré MAYOMBOT',
+            'role' => 'Integrateur de solutions
+                                    CFA/CFO & Formateur',
+            'image' => asset('images/team/team2.jpeg'),
         ],
         [
             'name' => 'Ing. SOH Kylian',
@@ -42,6 +40,13 @@
             'role' => 'Ingénieur structure',
             'image' => asset('images/team/team8.jpeg'),
         ],
+        [
+            'name' => 'NGAPOUT Noudine',
+            'role' => 'IT Manager',
+            'image' => asset('images/team/team6.jpeg'),
+        ],
+
+
     ];
 @endphp
 
