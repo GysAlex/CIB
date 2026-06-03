@@ -18,8 +18,7 @@ class UserForm
                 TextInput::make('email')
                 ->label('Email')
                 ->required()
-                ->unique(table: 'users', column: 'email', ignoreRecord: true)
-                ,
+                ->unique(table: 'users', column: 'email', ignoreRecord: true),
                 
                 TextInput::make('password')->label('Mot de passe')
                 ->password()

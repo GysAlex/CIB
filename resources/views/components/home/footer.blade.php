@@ -35,7 +35,6 @@
                             'Contact' => 'contact', 
                             'Réalisations' => 'project', 
                             'Formation' => 'formation',
-                            'Blog' => 'blog'
                             
                         ] as $label => $route)
                             <a href="{{ route($route) }}" 

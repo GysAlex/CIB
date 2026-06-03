@@ -3,41 +3,34 @@
         <h2 class="text-2xl font-bold text-[#1e262f] tracking-tight">Envoyez-nous un message</h2>
     </div>
 
-    @if (session()->has('message'))
-        <div class="mb-6 p-4 bg-green-50 text-green-700 rounded-2xl border border-green-200 flex items-center gap-3 animate-fade-in">
-            <i class="fa-solid fa-circle-check"></i>
-            {{ session('message') }}
-        </div>
-    @endif
-
     <form wire:submit.prevent="submit" class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-        
+
         <div class="md:col-span-2">
             <label class="block text-sm font-bold text-[#1e262f] mb-2">Nom Complet*</label>
-            <input type="text" wire:model="name" placeholder="Ex: Jean Douala" 
-                   class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
+            <input type="text" wire:model="name" placeholder="Ex: Jean Douala"
+                class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
             @error('name') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
         </div>
 
         <div class="md:col-span-2">
             <label class="block text-sm font-bold text-[#1e262f] mb-2">Adresse Email*</label>
             <input type="email" wire:model="email" placeholder="votre@email.com"
-                   class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
+                class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
             @error('email') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-bold text-[#1e262f] mb-2">Numéro de Téléphone*</label>
             <input type="text" wire:model="phone" placeholder="+237 6xx xxx xxx"
-                   class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
+                class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50">
             @error('phone') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
         </div>
 
         <div>
             <label class="block text-sm font-bold text-[#1e262f] mb-2">Type de Projet*</label>
             <div class="relative">
-                <select wire:model="projectType" 
-                        class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all appearance-none bg-gray-50/50 cursor-pointer">
+                <select wire:model="projectType"
+                    class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all appearance-none bg-gray-50/50 cursor-pointer">
                     <option value="">Sélectionnez un type</option>
                     <option value="residential">Construction Résidentielle (Villa, Duplex)</option>
                     <option value="commercial">Bâtiment Commercial / Bureaux</option>
@@ -53,20 +46,63 @@
 
         <div class="md:col-span-2">
             <label class="block text-sm font-bold text-[#1e262f] mb-2">Description de votre projet*</label>
-            <textarea wire:model="message" rows="5" placeholder="Parlez-nous de vos besoins, de la localisation, de vos délais..."
-                      class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50"></textarea>
+            <textarea wire:model="message" rows="5"
+                placeholder="Parlez-nous de vos besoins, de la localisation, de vos délais..."
+                class="w-full px-5 py-4 border border-gray-200 focus:border-gcp-primary-color focus:ring-1 focus:ring-gcp-primary-color outline-none transition-all bg-gray-50/50"></textarea>
             @error('message') <span class="text-red-500 text-xs mt-1">{{ $message }}</span> @enderror
         </div>
+        <div class="md:col-span-2">
+            <label class="block text-sm font-bold text-[#1e262f] mb-2">
+                Pièces jointes <span class="text-gray-400 font-normal">(Optionnel - Plans, Cahier des charges,
+                    Images...)</span>
+            </label>
+            <div
+                class="relative w-full px-5 py-4 border border-dashed border-gray-300 bg-gray-50/50 rounded-lg hover:bg-gray-50 transition-all flex flex-col items-center justify-center text-center cursor-pointer">
+                <input type="file" wire:model="attachments" id="attachments" multiple
+                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
 
+                <div class="flex items-center gap-3 text-gray-500" wire:loading.remove wire:target="attachments">
+                    <i class="fa-solid fa-cloud-arrow-up text-lg text-gcp-primary-color"></i>
+                    <span class="text-sm">Cliquez pour ajouter un ou plusieurs fichiers <span class="font-bold">(PDF,
+                            PNG, JPG, DOCX)</span></span>
+                </div>
+
+                <div class="hidden items-center gap-3 text-gcp-primary-color" wire:loading.flex
+                    wire:target="attachments">
+                    <div
+                        class="animate-spin size-4 border-2 border-gcp-primary-color/30 border-t-gcp-primary-color rounded-full">
+                    </div>
+                    <span class="text-sm font-semibold">Téléversement des fichiers en cours...</span>
+                </div>
+            </div>
+
+            @if (count($attachments) > 0)
+                <div class="mt-2 text-xs text-green-600 font-medium flex items-center gap-1">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    {{ count($attachments) }} fichier(s) prêt(s) à l'envoi.
+                </div>
+            @endif
+
+            @error('attachments.*') <span class="text-red-500 text-xs mt-1 block">{{ $message }}</span> @enderror
+        </div>
         <div class="md:col-span-2 flex justify-center mt-4">
-            <button type="submit" 
-                    class="bg-gcp-primary-color text-white px-6 py-3 font-bold flex items-center gap-3 hover:shadow-2xl hover:shadow-gcp-primary-color/30 transition-all group">
-                <span > Envoyer le message </span>
-                <i class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
-                
-                <div wire:loading class="ml-2 animate-spin size-4 border-2 border-white/30 border-t-white rounded-full"></div>
+            <button type="submit"
+                class="bg-gcp-primary-color text-white px-6 py-3 font-bold flex items-center gap-3 hover:shadow-2xl hover:shadow-gcp-primary-color/30 transition-all group">
+                <span> Envoyer le message </span>
+                <i
+                    class="fa-solid fa-paper-plane text-sm transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"></i>
+
+                <div wire:loading class="ml-2 animate-spin size-4 border-2 border-white/30 border-t-white rounded-full">
+                </div>
             </button>
         </div>
+        @if (session()->has('message'))
+            <div
+                class="mt-4 p-4 md:col-span-2 bg-green-50 text-green-700 rounded-2xl border border-green-200 flex items-center gap-3 text-xs w-full animate-fade-in">
+                <i class="fa-solid fa-circle-check"></i>
+                {{ session('message') }}
+            </div>
+        @endif
 
     </form>
 </div>

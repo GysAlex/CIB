@@ -11,8 +11,8 @@
         ],
         [
             'title' => 'Complexe Mixte Yassa',
-            'client' => 'Institutionnel religieux / Commercial',
-            'location' => 'Douala, Yassa',
+            'client' => 'Institutionnel bancaire',
+            'location' => 'Douala, Akwa',
             'date' => 'Janvier 2026',
             'category' => 'Établissement Mixte',
             'image' => asset('images/project/projet1.jpeg'),

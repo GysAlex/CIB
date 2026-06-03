@@ -6,7 +6,6 @@ import { SplitText } from 'gsap/SplitText'
 gsap.registerPlugin(ScrollTrigger)
 gsap.registerPlugin(SplitText)
 
-
 function headerAnimation() {
     const headerBg = document.querySelector('.h-bg');
     const heroSection = document.querySelector('.hero-section');

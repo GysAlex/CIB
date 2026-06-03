@@ -4,9 +4,9 @@
 Un client potentiel vient d'envoyer une demande via le site web. Voici les détails :
 
 @component('mail::panel')
-**Nom :** {{ $data['name'] }}
-**Email :** {{ $data['email'] }}
-**Téléphone :** {{ $data['phone'] }}
+**Nom :** {{ $data['name'] }}<br>
+**Email :** {{ $data['email'] }}<br>
+**Téléphone :** {{ $data['phone'] }}<br>
 **Type de projet :** {{ $data['projectType'] }}
 @endcomponent
 

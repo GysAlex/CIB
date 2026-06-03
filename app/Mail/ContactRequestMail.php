@@ -8,18 +8,21 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
+use Throwable;
 
-class ContactRequestMail extends Mailable implements ShouldQueue
+class ContactRequestMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public $data)
+    public function __construct(public array $data, public array $storedFiles = []) 
     {
-        // 
+        
     }
 
     /**
@@ -43,6 +46,14 @@ class ContactRequestMail extends Mailable implements ShouldQueue
         );
     }
 
+
+    public function failed(Throwable $exception): void
+    {
+        Log::info('Mail Error', [
+            'detail' => $exception
+        ]);
+    }
+
     /**
      * Get the attachments for the message.
      *
@@ -50,6 +61,15 @@ class ContactRequestMail extends Mailable implements ShouldQueue
      */
     public function attachments(): array
     {
-        return [];
+        $attachments = [];
+
+        foreach ($this->storedFiles as $path) {
+            if (Storage::exists($path)) {
+                $attachments[] = Attachment::fromPath(Storage::path($path));
+            }
+        }
+
+        return $attachments;
+
     }
 }

@@ -10,12 +10,41 @@
                 <h1 class="text-white capitalize  gcp-headline font-medium text-4xl lg:text-5xl leading-tight">
                     Travaillons ensemble
                 </h1>
-                <p class="text-muted/80">
-                    Vous avez un projet immobilier ? Qu'il s'agisse d'une conception 3D, de travaux de gros
-                    œuvre, d'une rénovation ou d'une construction intelligente, notre expertise technique est à votre
-                    service. Contactez-nous dès aujourd'hui pour bâtir ensemble des ouvrages durables, innovants et
-                    d'une excellence architecturale absolue.
-                </p>
+                <div class="text-muted/80 flex flex-col gap-3">
+                    <div>Besoin d'un partenaire de confiance pour vos projets de construction ou de formation BTP ?</div>
+                    <div>
+                        Nous mettons notre expertise technique au service de votre réussite à travers trois piliers :
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <div class="">
+                            <span class="font-bold">
+                                L'accompagnement de vos projets de construction (neuf et rénovation) 
+                            </span>
+                            <span>
+                                : de la conception architecturale jusqu'au suivi rigoureux des travaux.
+                            </span>
+                        </div>
+                        <div class="">
+                            <span class="font-bold">
+                                L'optimisation de vos processus 
+                            </span>
+                            <span>
+                                : intégration de la méthodologie BIM dans votre unité de production.
+                            </span>
+                        </div>
+                        <div class="">
+                            <span class="font-bold">
+                                La performance de vos équipes
+                            </span>
+                            <span>
+                                : formation sur-mesure aux techniques de conception collaborative et paramétrique.
+                                Exigez l'excellence architecturale et la durabilité. Contactez-nous dès maintenant pour une étude de votre projet.
+                            </span>
+                        </div>
+                    </div>
+
+
+                </div>
                 <div class="mt-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="flex flex-col gap-2">

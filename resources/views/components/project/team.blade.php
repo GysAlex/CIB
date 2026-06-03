@@ -8,13 +8,13 @@
         [
             'name' => 'Honoré MAYOMBOT',
             'role' => 'Integrateur de solutions
-                CFA/CFO & Formateur',
+                    CFA/CFO & Formateur',
             'image' => asset('images/team/team2.jpeg'),
         ],
         [
             'name' => 'FREDERICK NDAM MBAH',
             'role' => 'Ing. Senior Genie Civil 
-            Spécialiste structure',
+                Spécialiste structure',
             'image' => asset('images/team/team3.jpeg'),
         ],
         [
@@ -70,14 +70,17 @@
                     <img class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-101"
                         src="{{ $member['image'] }}" alt="{{ $member['name'] }}">
                 </div>
-                <div class="px-3 py-3 flex items-center justify-start gap-3 border border-border">
+                <div class="px-3 py-3 flex flex-col gap-y-1.5 border border-border">
                     <span class="text-foreground font-bold tracking-tight">
                         {{ $member['name'] }}
                     </span>
-                    <span class="size-1.5 rounded-full bg-gcp-primary-color"></span>
-                    <span class="text-muted-foreground text-[13px] font-medium">
-                        {{ $member['role'] }}
-                    </span>
+                    <div class="flex flex-row gap-1 items-center">
+                        <span class="size-1.5 rounded-full bg-gcp-primary-color"></span>
+                        <span class="text-muted-foreground text-[13px] font-medium">
+                            {{ $member['role'] }}
+                        </span>
+                    </div>
+
                 </div>
             </div>
         @endforeach
