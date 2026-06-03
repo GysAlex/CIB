@@ -10,7 +10,7 @@
             'description' => 'Étude architecturale, d’ingénierie et réalisation complète du Gros œuvre et de la Voirie et Réseau Divers (VRD) pour une villa moderne de type R+1 s’étendant sur une superficie de 130 m².'
         ],
         [
-            'title' => 'Complexe Mixte Akwa',
+            'title' => 'Complex Mixte Akwa',
             'client' => 'Institutionnel bancaire',
             'location' => 'Douala, Akwa',
             'date' => 'Janvier 2026',
@@ -19,9 +19,9 @@
             'description' => 'Étude architecturale, d’ingénierie et mission complète de contrôle pour un complexe d’envergure de type SS+R+MEZ+8 de 490 m², contenant principalement une habitation commerciale.'
         ],
         [
-            'title' => 'Siège Administratif PAK',
-            'client' => 'Port Autonome de Kribi',
-            'location' => 'Kribi, Zone Portuaire',
+            'title' => 'Complex mixte',
+            'client' => 'Institutionnel bancaire',
+            'location' => 'Yaounde',
             'date' => 'Décembre 2025', 
             'category' => 'Bâtiment Administratif',
             'image' => asset('images/project/projet3.jpg'),
