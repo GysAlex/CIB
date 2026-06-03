@@ -10,7 +10,7 @@
             Notre position sur la <span class="text-gcp-primary-color">carte</span>
         </h2>
     </div>
-    <div class="map-cont mt-8 min-h-120">
+    <div class="map-cont mt-8 min-h-120 ">
         <iframe
             class="w-full min-h-120"
             src="https://www.google.com/maps/embed?pb=!1m24!1m8!1m3!1d1989.87927073291!2d9.7577502!3d4.0695518!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x106113480444a47f%3A0xd788a1c23a4acd05!2sPharmacie%20kotto%20immeubles%2C%203P76%2BXFG%2C%20Rue%20Kotto%2C%20Douala!3m2!1d4.0649292!2d9.7112194!4m5!1s0x106113480444a47f%3A0xd788a1c23a4acd05!2sPharmacie%20kotto%20immeubles%2C%203P76%2BXFG%2C%20Rue%20Kotto%2C%20Douala!3m2!1d4.0649292!2d9.7112194!5e0!3m2!1sfr!2scm!4v1776445468350!5m2!1sfr!2scm"
