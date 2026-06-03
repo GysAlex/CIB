@@ -10,7 +10,7 @@
             'description' => 'Étude architecturale, d’ingénierie et réalisation complète du Gros œuvre et de la Voirie et Réseau Divers (VRD) pour une villa moderne de type R+1 s’étendant sur une superficie de 130 m².'
         ],
         [
-            'title' => 'Complexe Mixte Yassa',
+            'title' => 'Complexe Mixte Akwa',
             'client' => 'Institutionnel bancaire',
             'location' => 'Douala, Akwa',
             'date' => 'Janvier 2026',

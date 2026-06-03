@@ -68,10 +68,10 @@
                             </span>
                             <div class="flex gap-2 items-start flex-wrap">
                                 <span class="text-muted">
-                                    (+237) 738 536 33
+                                    (+237) 673 853 633
                                 </span>
                                 <span class="text-muted">
-                                    (+237) 699 946 131
+                                    (+237) 699 946 331
                                 </span>
                                 <span class="text-muted">
                                     (+49) 176 813 940 50
