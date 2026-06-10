@@ -10,6 +10,8 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
+Swiper.use([Autoplay, Pagination])
+
 const swiper = new Swiper('.swiper', {
     modules: [Autoplay, Pagination],
     loop: true,
@@ -18,7 +20,7 @@ const swiper = new Swiper('.swiper', {
     centeredSlides: true,
     
     autoplay: {
-        delay: 2500,
+        delay: 4000,
         disableOnInteraction: false,
         disableOnMouseEnter: true
     },

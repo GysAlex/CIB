@@ -1,7 +1,7 @@
 import gsap from 'gsap'
 import { SplitText } from 'gsap/SplitText'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, Thumbs } from 'swiper/modules';
 
 import Swiper from 'swiper'
 
@@ -10,7 +10,60 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const swiper = new Swiper('.swiper', {
+
+Swiper.use([Navigation, Thumbs, Pagination, Autoplay])
+
+var swiper1 = new Swiper(".mySwiper", {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    loop: true,
+    watchSlidesProgress: true,
+    freeMode: true,
+    direction: 'horizontal',
+    breakpoints: {
+        768:{
+            direction: "vertical"
+        },
+
+        400:{
+            slidesPerView: 3
+        },
+
+        300: {
+            slidesPerView: 2
+        }
+
+    },    
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        disableOnMouseEnter: true
+    },
+
+})
+
+var swiper2 = new Swiper(".mySwiper2", {
+    spaceBetween: 10,
+    loop: true,
+
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        disableOnMouseEnter: true
+    },
+
+    thumbs:{
+        swiper: swiper1,
+        slideThumbActiveClass: 'swiper-slide-thumb-active'
+    }
+})
+
+const swiper = new Swiper('.myFirstSwiper', {
     modules: [Autoplay, Pagination],
     loop: true,
     spaceBetween: 30,
@@ -27,7 +80,6 @@ const swiper = new Swiper('.swiper', {
         el: '.swiper-pagination',
     },
 })
-
 
 gsap.registerPlugin(SplitText)
 gsap.registerPlugin(ScrollTrigger)

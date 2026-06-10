@@ -18,7 +18,7 @@ const swiper = new Swiper('.swiper', {
     lazy: true,
     
     autoplay: {
-        delay: 2500,
+        delay: 4000,
         disableOnInteraction: false,
         disableOnMouseEnter: true
     },

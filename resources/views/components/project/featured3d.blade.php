@@ -1,8 +1,8 @@
 <div class="bg-[#040017]">
     <div class="flex flex-col gap-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-30 pb-20">
-        <div class="flex lg:items-center justify-between gap-4 flex-col ">
+        <div class="flex items-center justify-between gap-4 flex-col ">
             <span
-                class="text-gcp-primary-color bg-gcp-primary-color/10 text-[13px] font-bold rounded-3xl px-3 py-2">
+                class="text-gcp-primary-color w-fit bg-gcp-primary-color/10 text-[13px] font-bold rounded-3xl px-3 py-2">
                 Technologie
             </span>
             <h2 class="text-4xl lg:text-5xl text-white text-center">

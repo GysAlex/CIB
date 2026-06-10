@@ -46,7 +46,7 @@
 
             </div>
             <div class="max-w-150 h-100 w-full">
-                <div class="swiper w-full h-full">
+                <div class="swiper myFirstSwiper w-full h-full">
                     <div class="swiper-wrapper">
                         <!-- Slides -->
                         @foreach($slides as $slide)

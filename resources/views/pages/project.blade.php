@@ -19,6 +19,12 @@
     <link rel="canonical" href="{{ url()->current() }}">
 @endsection
 
+@push('scripts')
+    @vite(['resources/js/pages/project.js', 'resources/css/pages/project.css' ])   
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script> 
+@endpush
+
+
 @section('title')
     Nos Réalisations & Projets BTP | CIB Construction Cameroun
 @endsection
@@ -37,8 +43,4 @@
 @endsection
 
 
-@push('scripts')
-    @vite(['resources/js/pages/project.js', 'resources/css/pages/project.css' ])   
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script> 
-@endpush
 
