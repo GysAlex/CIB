@@ -17,6 +17,7 @@ var swiper1 = new Swiper(".mySwiper", {
     spaceBetween: 10,
     slidesPerView: 3,
     loop: true,
+    lazy: true,
     watchSlidesProgress: true,
     freeMode: true,
     direction: 'horizontal',
@@ -45,7 +46,7 @@ var swiper1 = new Swiper(".mySwiper", {
 var swiper2 = new Swiper(".mySwiper2", {
     spaceBetween: 10,
     loop: true,
-
+    lazy: true,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",

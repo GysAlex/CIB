@@ -48,7 +48,7 @@
                                 {{ $project['description'] }}
                             </p>
                         </div>
-                        <img class="object-cover w-full h-full rounded-3xl" src="{{ asset($project['image']) }}" alt="{{ $project['title'] }}" />
+                        <img loading="lazy" class="object-cover w-full h-full rounded-3xl" src="{{ asset($project['image']) }}" alt="{{ $project['title'] }}" />
                     </div>
                 @endforeach
             </div>
@@ -66,7 +66,7 @@
                                 Visualiser
                             </span>
                         </div>
-                        <img class="object-cover w-full h-full rounded-3xl" src="{{ asset($project['image']) }}" alt="{{ $project['title'] }}" />
+                        <img loading="lazy" class="object-cover w-full h-full rounded-3xl" src="{{ asset($project['image']) }}" alt="{{ $project['title'] }}" />
                     </div>
                 @endforeach
             </div>
